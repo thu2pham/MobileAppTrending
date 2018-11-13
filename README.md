@@ -1,4 +1,4 @@
-# ds320finalproj
+# DS320 - Data Visualization Final Project 2018
 
 1. Data Acquisition and Cleaning 10% - You acquired the data from multiple sources and integrated it into one or more datasets in your project. In addition, you took steps to identify problems within the dataset and clean it. 
 2. Ask a question which can be answered by the data 10% - Ask a question that might mean a savings in money, environment, or for the better good of humanity and find something in the data to support an answer for your question.
