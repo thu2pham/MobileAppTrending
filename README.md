@@ -6,17 +6,3 @@
 4. Provide a narrative for your presentation 20% - Talk about what went wrong and what hurdles you had to overcome (you can get this information from your journal).
 5. Provide visualizations that support your claims in answering your question(s) 40% - Provide at least 10 different visualizations. Use what we have learned in class and bring in additional visualizations that give insight into what you are trying to prove. 
 
-# Part 0: Acquiring data
-
-**Nov 6 2018**
-
-We accquired 2 dataset from Kaggle. 
-1. Google Store data: https://www.kaggle.com/lava18/google-play-store-apps
-2. AppStore data: https://www.kaggle.com/ramamet4/app-store-apple-data-set-10k-apps
-
-Two datasets include similar variables and can be very valuable to analyze the growth of applications from two most popular platform - Android vs Apple.
-
-# Part 1: Cleaning data
-
-**Nov 8 2018**
-
