@@ -1,0 +1,13 @@
+# Part 0: Acquiring data
+
+**Nov 6 2018**
+
+We accquired 2 dataset from Kaggle. 
+1. Google Store data: https://www.kaggle.com/lava18/google-play-store-apps
+2. AppStore data: https://www.kaggle.com/ramamet4/app-store-apple-data-set-10k-apps
+
+Two datasets include similar variables and can be very valuable to analyze the growth of applications from two most popular platform - Android vs Apple.
+
+# Part 1: Cleaning data
+
+**Nov 8 2018**
