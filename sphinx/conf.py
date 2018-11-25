@@ -33,16 +33,20 @@
 # ones.
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.imgmath',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.githubpages',
+    'nbsphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+### MARKDOWN PARSER
+# source_parsers = {
+#    '.md': 'recommonmark.parser.CommonMarkParser',
+# }
+source_suffix = ['.rst', '.md', '.ipynb']
+# source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
@@ -71,7 +75,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -105,8 +109,9 @@ html_static_path = ['_static']
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
+        'globaltoc.html',
         'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
+        'searchbox.html'
     ]
 }
 
@@ -166,6 +171,5 @@ texinfo_documents = [
      author, 'DataVisualizationWebsite', 'One line description of project.',
      'Miscellaneous'),
 ]
-
 
 

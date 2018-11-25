@@ -6,10 +6,12 @@
 Welcome to Data Visualization Website's documentation!
 ======================================================
 
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
+   :caption: Table of Contents:
+   
+   notebooks/Google Data.ipynb
 
 
 Indices and tables
