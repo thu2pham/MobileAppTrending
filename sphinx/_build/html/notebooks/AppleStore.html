@@ -203,10 +203,10 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
 </div>
@@ -216,8 +216,8 @@ import seaborn as sns
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>store = pd.read_csv(&#39;http://knuth.luther.edu/~sturza01/AppleStore.csv&#39;)
-store
+<span></span><span class="n">store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;http://knuth.luther.edu/~sturza01/AppleStore.csv&#39;</span><span class="p">)</span>
+<span class="n">store</span>
 </pre></div>
 </div>
 </div>
@@ -1496,7 +1496,7 @@ store
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>store[&#39;size&#39;].mean()
+<span></span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1518,9 +1518,9 @@ store
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>criteria1 = store.price &gt; 0
-paidapps = store[criteria1]
-paidapps.index
+<span></span><span class="n">criteria1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">paidapps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">criteria1</span><span class="p">]</span>
+<span class="n">paidapps</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -1543,8 +1543,8 @@ paidapps.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>paidappcount = store[&quot;price&quot;].value_counts()
-paidappcount.head()
+<span></span><span class="n">paidappcount</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">paidappcount</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1569,8 +1569,8 @@ Name: price, dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>multiapp = paidappcount[paidappcount.values &gt; 10]
-multiapp.index
+<span></span><span class="n">multiapp</span> <span class="o">=</span> <span class="n">paidappcount</span><span class="p">[</span><span class="n">paidappcount</span><span class="o">.</span><span class="n">values</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">multiapp</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -1590,7 +1590,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>multiapp.plot(kind=&quot;barh&quot;, width=0.8, figsize=(10,10))
+<span></span><span class="n">multiapp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1620,7 +1620,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>storeprod = store[[&quot;Genre&quot;,&quot;price&quot;]]
+<span></span><span class="n">storeprod</span> <span class="o">=</span> <span class="n">store</span><span class="p">[[</span><span class="s2">&quot;Genre&quot;</span><span class="p">,</span><span class="s2">&quot;price&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1630,7 +1630,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>TotalPriceByGenre = storeprod.groupby([&quot;Genre&quot;]).sum().sort_values(&quot;price&quot;, ascending=False).head(10)
+<span></span><span class="n">TotalPriceByGenre</span> <span class="o">=</span> <span class="n">storeprod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Genre&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1640,7 +1640,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>TotalPriceByGenre
+<span></span><span class="n">TotalPriceByGenre</span>
 </pre></div>
 </div>
 </div>
@@ -1726,7 +1726,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>TotalPriceByGenre.plot(kind=&quot;barh&quot;, width=0.8, figsize=(10,10))
+<span></span><span class="n">TotalPriceByGenre</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1756,9 +1756,9 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data = store[[&quot;rating&quot;,&quot;user_rating_ver&quot;]]
-data = data.fillna(0)
-data
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">store</span><span class="p">[[</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span><span class="s2">&quot;user_rating_ver&quot;</span><span class="p">]]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -2107,8 +2107,8 @@ data
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.boxplot(data, False, &quot;rs&quot;, False)
-plt.show()
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;rs&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2128,8 +2128,8 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df = pd.DataFrame(store[&quot;rating&quot;], columns=[&quot;rating&quot;,&quot;user_rating_ver&quot;])
-df
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span><span class="s2">&quot;user_rating_ver&quot;</span><span class="p">])</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -2478,7 +2478,7 @@ df
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data.plot.area()
+<span></span><span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2505,7 +2505,7 @@ df
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df.plot.area()
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2535,12 +2535,12 @@ df
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>priceratedR = store[store.cont_rating==17].groupby(&#39;cont_rating&#39;).mean()[&quot;price&quot;]
-priceratedT = store[store.cont_rating==12].groupby(&#39;cont_rating&#39;).mean()[&quot;price&quot;]
-priceratedE = store[store.cont_rating==0].groupby(&#39;cont_rating&#39;).mean()[&quot;price&quot;]
-PriceContRating = priceratedR, priceratedT, priceratedE
-contratingcount = store[&quot;cont_rating&quot;].value_counts()
-contratingcount
+<span></span><span class="n">priceratedR</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">==</span><span class="mi">17</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">priceratedT</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">==</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">priceratedE</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">PriceContRating</span> <span class="o">=</span> <span class="n">priceratedR</span><span class="p">,</span> <span class="n">priceratedT</span><span class="p">,</span> <span class="n">priceratedE</span>
+<span class="n">contratingcount</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s2">&quot;cont_rating&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">contratingcount</span>
 </pre></div>
 </div>
 </div>
@@ -2564,7 +2564,7 @@ Name: cont_rating, dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.bar(contratingcount.index, contratingcount)
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">contratingcount</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">contratingcount</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2594,7 +2594,7 @@ Name: cont_rating, dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>store[&#39;price&#39;] = pd.to_numeric(store[&#39;price&#39;], errors=&#39;coerce&#39;)
+<span></span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2604,18 +2604,18 @@ Name: cont_rating, dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>free_apps = store[store[&#39;price&#39;]==0]
-paid_apps = store[store[&#39;price&#39;]&gt;0]
+<span></span><span class="n">free_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">paid_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
 
-labels = [&#39;Free Apps&#39;, &#39;Paid Apps&#39;]
-sizes = [free_apps.shape[0], paid_apps.shape[0]]
-colors = [&#39;blue&#39;,&#39;orange&#39;]
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">,</span> <span class="s1">&#39;Paid Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">free_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">paid_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 
-plt.pie(sizes, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;, shadow=True,startangle=90)
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
-plt.title(&#39;Pie chart of app price&#39;)
-plt.axis(&#39;equal&#39;)
-plt.show
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie chart of app price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -2645,9 +2645,9 @@ plt.show
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>genre_expens_app = store.groupby([&#39;Genre&#39;])[&#39;price&#39;].max().reset_index()
-expens_app = genre_expens_app.merge(store,on=[&#39;Genre&#39;,&#39;price&#39;],how=&#39;left&#39;)
-expens_app[[&#39;Genre&#39;,&#39;app&#39;,&#39;price&#39;]].sort_values(&#39;price&#39;,ascending=False).head(20)
+<span></span><span class="n">genre_expens_app</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Genre&#39;</span><span class="p">])[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">expens_app</span> <span class="o">=</span> <span class="n">genre_expens_app</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">expens_app</span><span class="p">[[</span><span class="s1">&#39;Genre&#39;</span><span class="p">,</span><span class="s1">&#39;app&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2814,11 +2814,11 @@ expens_app[[&#39;Genre&#39;,&#39;app&#39;,&#39;price&#39;]].sort_values(&#39;pri
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def plot(ax,w,h):
-    ax.spines[&#39;top&#39;].set_visible(False)
-    ax.spines[&#39;right&#39;].set_visible(False)
-    for p in ax.patches:
-        ax.annotate(&#39;{}&#39;.format(p.get_height()), (p.get_x()+w, p.get_height()+h))
+<span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2828,22 +2828,22 @@ expens_app[[&#39;Genre&#39;,&#39;app&#39;,&#39;price&#39;]].sort_values(&#39;pri
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.figure(figsize=(18,9))
-plt.subplot(1,2,1)
-ax1=sns.countplot(&#39;rating&#39;,data=free_apps,palette=&#39;Set1&#39;)
-plt.title(&#39;Free Apps Rating&#39;)
-plt.xlabel(&#39;User Rating&#39;)
-plt.ylabel(&#39;Free Apps&#39;)
-plt.xticks(rotation=80)
-plot(ax1,0.05,1)
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">free_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Free Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-plt.subplot(1,2,2)
-ax2=sns.countplot(&#39;rating&#39;,data=paid_apps,palette=&#39;Set1&#39;)
-plt.title(&#39;Paid Apps Rating&#39;)
-plt.xlabel(&#39;User Rating&#39;)
-plt.ylabel(&#39;Paid Apps&#39;)
-plt.xticks(rotation=80)
-plot(ax2,0.05,1)
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">paid_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Paid Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Paid Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 
 </pre></div>
@@ -2865,18 +2865,18 @@ plot(ax2,0.05,1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>large_apps = store[store[&#39;size&#39;]&gt;20000000]
-small_apps = store[store[&#39;size&#39;]&lt;20000000]
+<span></span><span class="n">large_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20000000</span><span class="p">]</span>
+<span class="n">small_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">20000000</span><span class="p">]</span>
 
-labels = [&#39;Large apps &gt; 20MB&#39;, &#39;Small apps &lt; 20MB&#39;]
-sizes = [large_apps.shape[0], small_apps.shape[0]]
-colors = [&#39;blue&#39;,&#39;orange&#39;]
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Large apps &gt; 20MB&#39;</span><span class="p">,</span> <span class="s1">&#39;Small apps &lt; 20MB&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">large_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">small_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 
-plt.pie(sizes, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;, shadow=True,startangle=90)
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
-plt.title(&#39;Pie chart of app size&#39;)
-plt.axis(&#39;equal&#39;)
-plt.show
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie chart of app size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -2906,7 +2906,7 @@ plt.show
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>store[&#39;reviews&#39;].describe()
+<span></span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2934,8 +2934,8 @@ Name: reviews, dtype: float64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>crit6 = store[store[&#39;reviews&#39;]&gt;=250000]
-crit7 = store[store[&#39;reviews&#39;]&lt;250000]
+<span></span><span class="n">crit6</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">250000</span><span class="p">]</span>
+<span class="n">crit7</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">250000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2945,18 +2945,18 @@ crit7 = store[store[&#39;reviews&#39;]&lt;250000]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>ReviewCountAbove250k = crit6
-ReviewCountBelow250k = crit7
+<span></span><span class="n">ReviewCountAbove250k</span> <span class="o">=</span> <span class="n">crit6</span>
+<span class="n">ReviewCountBelow250k</span> <span class="o">=</span> <span class="n">crit7</span>
 
-labels = [&#39;Apps with more than 250k reviews&#39;, &#39;Apps with less than 250k reviews&#39;]
-sizes = [ReviewCountAbove250k.shape[0], ReviewCountBelow250k.shape[0]]
-colors = [&#39;blue&#39;,&#39;orange&#39;]
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apps with more than 250k reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;Apps with less than 250k reviews&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ReviewCountAbove250k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ReviewCountBelow250k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 
-plt.pie(sizes, labels=labels, colors=colors, autopct=&#39;%1.1f%%&#39;, shadow=True,startangle=90)
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
-plt.title(&#39;Pie chart of app price&#39;)
-plt.axis(&#39;equal&#39;)
-plt.show
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie chart of app price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
 </pre></div>
 </div>
 </div>

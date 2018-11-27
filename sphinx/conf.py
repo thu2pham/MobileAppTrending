@@ -34,7 +34,8 @@
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.imgmath',
     'sphinx.ext.githubpages',
-    'nbsphinx']
+    'nbsphinx',
+    'RunNotebook']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -172,4 +173,13 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+# Run notebook configuration
+
+# The template used when exporting from nbconvert
+#   full  - Outputs the full HTML document [Default]
+#   basic - Outputs a single div (with no additional resources)
+run_notebook_export_template = 'basic'  # Default: 'full'
+
+# Display the source links to the generated evaluated files
+run_notebook_display_source_links = False  # Default: True
 

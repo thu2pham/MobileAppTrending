@@ -15,6 +15,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to Data Visualization Website’s by Thu &amp; Zach!" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -203,10 +204,10 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -216,8 +217,8 @@ import matplotlib.pyplot as plt
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = pd.read_csv(&#39;google-play-store-apps/googleplaystore.csv&#39;, encoding = &quot;ISO-8859-1&quot;)
-googleStore.head(5)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;google-play-store-apps/googleplaystore.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span>
+<span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -351,8 +352,8 @@ googleStore.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleReview = pd.read_csv(&quot;google-play-store-apps/googleplaystore_user_reviews.csv&quot;, encoding = &quot;ISO-8859-1&quot;)
-googleReview.head(5)
+<span></span><span class="n">googleReview</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;google-play-store-apps/googleplaystore_user_reviews.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span>
+<span class="n">googleReview</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -438,7 +439,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.rename(columns={&#39;App&#39;: &#39;app&#39;, &#39;Rating&#39;: &#39;rating&#39;, &#39;Reviews&#39;: &#39;reviews&#39;, &#39;Size&#39;: &#39;size&#39;, &#39;Price&#39;: &#39;price&#39;, &#39;Genres&#39;: &#39;genres&#39;}, inplace=True)
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;App&#39;</span><span class="p">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">:</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Reviews&#39;</span><span class="p">:</span> <span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;Size&#39;</span><span class="p">:</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;Genres&#39;</span><span class="p">:</span> <span class="s1">&#39;genres&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -448,7 +449,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.head(5)
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -582,7 +583,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.drop(columns=[&#39;Category&#39;, &#39;Installs&#39;, &#39;Type&#39;, &#39;Last Updated&#39;, &#39;Current Ver&#39;, &#39;Android Ver&#39;])
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Installs&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Last Updated&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Ver&#39;</span><span class="p">,</span> <span class="s1">&#39;Android Ver&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -593,7 +594,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;price&#39;] = googleStore[&#39;price&#39;].replace({&#39;\$&#39;: &#39;&#39;}, regex=True)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;\$&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +605,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.cont_rating.unique()
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -625,7 +626,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(&#39;Teen&#39;, 12)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Teen&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +636,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(&#39;Everyone&#39;, 0)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Everyone&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -645,7 +646,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(&#39;Everyone 10+&#39;, 0)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Everyone 10+&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -655,7 +656,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(&#39;Mature 17+&#39;, 17)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Mature 17+&#39;</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -665,7 +666,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(&#39;Adults only 18+&#39;, 18)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Adults only 18+&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -675,7 +676,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(&#39;Unrated&#39;, 0)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Unrated&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -685,7 +686,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore = googleStore.replace(np.nan, 0)
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -695,7 +696,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.cont_rating.unique()
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -715,7 +716,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.head(5)
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -813,7 +814,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;size&#39;] = googleStore[&#39;size&#39;].replace({&#39;M&#39;: &#39;&#39;}, regex=True)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -823,7 +824,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.head(5)
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -921,7 +922,7 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.genres.unique()
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">genres</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -987,8 +988,8 @@ googleReview.head(5)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].replace({&#39; &amp;&#39;: &#39;,&#39;}, regex=True)
-googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].replace({&#39;;&#39;: &#39; ,&#39;}, regex=True)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39; &amp;&#39;</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="s1">&#39; ,&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -999,7 +1000,7 @@ googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].replace({&#39;;&#3
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].replace({&#39; ,&#39;: &#39;, &#39;}, regex=True)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39; ,&#39;</span><span class="p">:</span> <span class="s1">&#39;, &#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1009,7 +1010,7 @@ googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].replace({&#39;;&#3
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;genres&#39;]
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1090,7 +1091,7 @@ Name: genres, Length: 10841, dtype: object
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.genres.unique()
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">genres</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1157,7 +1158,7 @@ Name: genres, Length: 10841, dtype: object
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].replace(&#39;11-Feb-18&#39;, &#39;&#39;)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;11-Feb-18&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1167,7 +1168,7 @@ Name: genres, Length: 10841, dtype: object
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.genres.unique()
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">genres</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1234,7 +1235,7 @@ Name: genres, Length: 10841, dtype: object
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;genres&#39;] = googleStore[&#39;genres&#39;].apply(lambda x: x.split(&#39;,&#39;)[0])
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1244,8 +1245,8 @@ Name: genres, Length: 10841, dtype: object
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;size&#39;] = pd.to_numeric(googleStore[&#39;size&#39;], errors=&#39;coerce&#39;)
-googleStore[&#39;size&#39;] *= 1000000
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">1000000</span>
 </pre></div>
 </div>
 </div>
@@ -1255,7 +1256,7 @@ googleStore[&#39;size&#39;] *= 1000000
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;size&#39;].fillna(0, inplace=True)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1265,7 +1266,7 @@ googleStore[&#39;size&#39;] *= 1000000
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore.to_csv(&#39;googleData.csv&#39;, encoding=&#39;utf-8&#39;, index=False)
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;googleData.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1275,7 +1276,7 @@ googleStore[&#39;size&#39;] *= 1000000
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore
+<span></span><span class="n">googleStore</span>
 </pre></div>
 </div>
 </div>
@@ -1934,8 +1935,8 @@ googleStore[&#39;size&#39;] *= 1000000
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span># Convert data into numeric
-googleStore[&#39;price&#39;] = pd.to_numeric(googleStore[&#39;price&#39;], errors=&#39;coerce&#39;)
+<span></span><span class="c1"># Convert data into numeric</span>
+<span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1947,9 +1948,9 @@ googleStore[&#39;price&#39;] = pd.to_numeric(googleStore[&#39;price&#39;], error
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>criteria1 = googleStore.price &gt; 0
-paidapps = googleStore[criteria1]
-paidapps.index
+<span></span><span class="n">criteria1</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">paidapps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">criteria1</span><span class="p">]</span>
+<span class="n">paidapps</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -1974,8 +1975,8 @@ paidapps.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>paidappcount = googleStore[&quot;price&quot;].value_counts()
-paidappcount.head()
+<span></span><span class="n">paidappcount</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">paidappcount</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2000,8 +2001,8 @@ Name: price, dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>multiapp = paidappcount[paidappcount.values &gt; 10]
-multiapp.index
+<span></span><span class="n">multiapp</span> <span class="o">=</span> <span class="n">paidappcount</span><span class="p">[</span><span class="n">paidappcount</span><span class="o">.</span><span class="n">values</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">multiapp</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -2027,11 +2028,11 @@ multiapp.index
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 
-<span></span>def plot(ax,w,h):
-    ax.spines[&#39;top&#39;].set_visible(False)
-    ax.spines[&#39;right&#39;].set_visible(False)
-    for p in ax.patches:
-        ax.annotate(&#39;{}&#39;.format(p.get_height()), (p.get_x()+w, p.get_height()+h))
+<span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2044,7 +2045,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;reviews&#39;] = googleStore[&#39;reviews&#39;].replace(&#39;3.0M&#39;, &#39;3000000&#39;)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;3.0M&#39;</span><span class="p">,</span> <span class="s1">&#39;3000000&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2054,7 +2055,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;reviews&#39;] = pd.to_numeric(googleStore[&#39;reviews&#39;])
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2064,7 +2065,7 @@ multiapp.index
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;reviews&#39;].describe()
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2092,19 +2093,19 @@ Name: reviews, dtype: float64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>popular_apps = googleStore[googleStore[&#39;reviews&#39;] &gt; 250000]
-less_popular_apps = googleStore[googleStore[&#39;size&#39;] &lt; 250000]
-labels=[&#39;Popular Apps&#39;,&#39;Less Poplular Apps&#39;]
-sizes = [popular_apps.shape[0],less_popular_apps.shape[0]]
-colors = [&#39;blue&#39;,&#39;orange&#39;]
+<span></span><span class="n">popular_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">250000</span><span class="p">]</span>
+<span class="n">less_popular_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">250000</span><span class="p">]</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Popular Apps&#39;</span><span class="p">,</span><span class="s1">&#39;Less Poplular Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">popular_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">less_popular_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 
-# Plot
-plt.pie(sizes, labels=labels, colors=colors,
-        autopct=&#39;%1.1f%%&#39;, shadow=True,startangle=90)
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
-plt.title(&#39;Pie Chart of App Size&#39;)
-plt.axis(&#39;equal&#39;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie Chart of App Size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2134,7 +2135,7 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>avg = googleStore[&#39;size&#39;].mean()
+<span></span><span class="n">avg</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2144,19 +2145,19 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>large_apps = googleStore[googleStore[&#39;size&#39;] &gt; 20000000]
-small_apps = googleStore[googleStore[&#39;size&#39;] &lt; 20000000]
-labels=[&#39;Large Apps&#39;,&#39;Small Apps&#39;]
-sizes = [large_apps.shape[0],small_apps.shape[0]]
-colors = [&#39;blue&#39;,&#39;orange&#39;]
+<span></span><span class="n">large_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">20000000</span><span class="p">]</span>
+<span class="n">small_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">20000000</span><span class="p">]</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Large Apps&#39;</span><span class="p">,</span><span class="s1">&#39;Small Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">large_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">small_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 
-# Plot
-plt.pie(sizes, labels=labels, colors=colors,
-        autopct=&#39;%1.1f%%&#39;, shadow=True,startangle=90)
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
-plt.title(&#39;Pie Chart of App Size&#39;)
-plt.axis(&#39;equal&#39;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie Chart of App Size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2176,7 +2177,7 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>googleStore[&#39;price&#39;] = pd.to_numeric(googleStore[&#39;price&#39;], errors=&#39;coerce&#39;)
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2186,20 +2187,20 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>free_apps = googleStore[googleStore[&#39;price&#39;]==0]
-paid_apps = googleStore[googleStore[&#39;price&#39;]&gt;0]
+<span></span><span class="n">free_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">paid_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
 
-labels=[&#39;Free Apps&#39;,&#39;Paid Apps&#39;]
-sizes = [free_apps.shape[0],paid_apps.shape[0]]
-colors = [&#39;blue&#39;,&#39;orange&#39;]
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">,</span><span class="s1">&#39;Paid Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">free_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">paid_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 
-# Plot
-plt.pie(sizes, labels=labels, colors=colors,
-        autopct=&#39;%1.1f%%&#39;, shadow=True,startangle=90)
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 
-plt.title(&#39;Pie Chart of App Price&#39;)
-plt.axis(&#39;equal&#39;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie Chart of App Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2219,22 +2220,22 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.figure(figsize=(18,9))
-plt.subplot(1,2,1)
-ax1=sns.countplot(&#39;rating&#39;,data=free_apps,palette=&quot;Set1&quot;)
-plt.title(&#39;Free Apps Rating&#39;)
-plt.xlabel(&#39;User Rating&#39;)
-plt.ylabel(&#39;Free Apps&#39;)
-plt.xticks(rotation=80)
-plot(ax1,0.05,1)
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">free_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Free Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-plt.subplot(1,2,2)
-ax2=sns.countplot(&#39;rating&#39;,data=paid_apps,palette=&quot;Set1&quot;)
-plt.title(&#39;Paid Apps Rating&#39;)
-plt.xlabel(&#39;User Rating&#39;)
-plt.ylabel(&#39;Paid Apps&#39;)
-plt.xticks(rotation=80)
-plot(ax2,0.05,1)
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">paid_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Paid Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Paid Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2254,12 +2255,12 @@ plot(ax2,0.05,1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.figure(figsize=(10,12))
-ax=sns.countplot(&#39;genres&#39;,data=googleStore,palette=&quot;Set1&quot;,order=googleStore[&#39;genres&#39;].value_counts().index)
-plt.xlabel(&#39;GENRES&#39;)
-plt.ylabel(&#39;APPS&#39;)
-plt.xticks(rotation=80)
-plot(ax,1,2)
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">googleStore</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GENRES&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;APPS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2279,9 +2280,9 @@ plot(ax,1,2)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>genre_expens_app = googleStore.groupby([&#39;genres&#39;])[&#39;price&#39;].max().reset_index()
-expens_app = genre_expens_app.merge(googleStore,on=[&#39;genres&#39;,&#39;price&#39;],how=&#39;left&#39;)
-expens_app[[&#39;genres&#39;,&#39;app&#39;,&#39;price&#39;]].sort_values(&#39;price&#39;,ascending=False).head(20)
+<span></span><span class="n">genre_expens_app</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;genres&#39;</span><span class="p">])[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">expens_app</span> <span class="o">=</span> <span class="n">genre_expens_app</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">googleStore</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">expens_app</span><span class="p">[[</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="s1">&#39;app&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2448,11 +2449,11 @@ expens_app[[&#39;genres&#39;,&#39;app&#39;,&#39;price&#39;]].sort_values(&#39;pr
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.figure(figsize=(8,8))
-ax=sns.countplot(&#39;cont_rating&#39;,data=googleStore,palette=&quot;Set1&quot;,order=googleStore[&#39;cont_rating&#39;].value_counts().index)
-plt.xlabel(&#39;Content Rating&#39;)
-plt.ylabel(&#39;Apps&#39;)
-plot(ax,0.2,1)
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">googleStore</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Content Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Apps&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2472,13 +2473,13 @@ plot(ax,0.2,1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>for i in googleStore[&#39;cont_rating&#39;].unique():
-    plt.figure(figsize=(12,6))
-    ax=sns.countplot(&#39;genres&#39;,data=googleStore[googleStore[&#39;cont_rating&#39;]==i],palette=&quot;Set1&quot;,order=googleStore[&#39;genres&#39;].value_counts().index)
-    plt.xlabel(&#39;Genres&#39;)
-    plt.ylabel(&#39;Apps&#39;)
-    plt.title(str(int(i)) + &#39;+&#39; + &#39; Apps&#39;)
-    plt.xticks(rotation=80)
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">],</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Genres&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Apps&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span> <span class="o">+</span> <span class="s1">&#39; Apps&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2530,10 +2531,24 @@ plot(ax,0.2,1)
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
+<p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bar Chart for Count of each amount of Price</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Create-function-to-add-data-to-plot">Create function to add data to plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Compare-apps-with-more-review---popular-or-well-received-apps-vs-less-popular-apps">Compare apps with more review - popular or well-received apps vs less popular apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Compare-size-of-Apps">Compare size of Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Compare-free-vs-paid-Apps">Compare free vs paid Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Compare-user-rating-between-free-and-paid-apps">Compare user rating between free and paid apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#App-Distribution-by-Genres">App Distribution by Genres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Top-20-most-expensive-apps-on-Google-Store-by-Genre">Top 20 most expensive apps on Google Store by Genre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Content-Rating">Content Rating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Content-rating-by-Genre">Content rating by Genre</a></li>
+</ul>
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Data Visualization Website’s by Thu &amp; Zach!</a></li>
   </ul></li>
 </ul>
 </div>
