@@ -7,6 +7,8 @@ We accquired 2 dataset from Kaggle.
 2. AppStore data: https://www.kaggle.com/ramamet4/app-store-apple-data-set-10k-apps
 
 Two datasets include similar variables and can be very valuable to analyze the growth of applications from two most popular platform - Android vs Apple.
+Zach and I started looking into the data to standardize what we have in common and could be useful from two dataset. 
+
 
 # Part 1: Cleaning data
 
