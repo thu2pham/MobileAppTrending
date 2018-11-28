@@ -33,6 +33,7 @@ Data Cleaning
 Importing packages
 ++++++++++++++++++++
 We start by importing packages. Since we are working with CSV data, we will need *pandas* to read our data. Other packages will be helpful for visualization.
+
 .. code-block:: python
 
     import pandas as pd
@@ -43,7 +44,7 @@ We start by importing packages. Since we are working with CSV data, we will need
 Renaming and Dropping 
 +++++++++++++++++++++++
 As we talked earlier, in order to work with two separate dataset, we need to standardize each of the. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
-Note that I dropped some columns and renamed others in the following code
+Note that I dropped some columns and renamed others in the following code.
 
 .. code-block:: python
 
