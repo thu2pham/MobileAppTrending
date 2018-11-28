@@ -1,0 +1,2267 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bar Chart for Count of each amount of Price &#8212; Data Visualization Website  documentation</title>
+    <link rel="stylesheet" href="../../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Data Visualization Website  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Bar Chart for Count of each amount of Price</a></li>
+<li><a class="reference internal" href="#total-price-of-paid-apps-in-each-genre">Total Price of Paid Apps in each Genre</a></li>
+<li><a class="reference internal" href="#box-and-whisker-graph-to-show-user-rating-vs-app-rating">Box and Whisker Graph to show User Rating VS App Rating</a></li>
+<li><a class="reference internal" href="#super-ugly-area-plot-for-app-rating-vs-user-rating">Super Ugly Area Plot for App Rating VS User Rating</a></li>
+<li><a class="reference internal" href="#bar-chart-for-count-of-content-rating">Bar Chart for Count of Content Rating</a></li>
+<li><a class="reference internal" href="#pie-chart-for-free-vs-paid-app-counts">Pie Chart for Free VS Paid App Counts</a></li>
+<li><a class="reference internal" href="#most-expensive-apps-by-genre">Most Expensive Apps By Genre</a></li>
+<li><a class="reference internal" href="#bar-chart-for-rating-of-free-vs-paid-apps">Bar Chart For Rating of Free VS. Paid Apps</a></li>
+<li><a class="reference internal" href="#pie-chart-for-size-comparison">Pie Chart for Size Comparison</a></li>
+<li><a class="reference internal" href="#pie-chart-for-reviews">Pie Chart for Reviews</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/sphinx/notebooks/AppleStore/AppleStore.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;http://knuth.luther.edu/~sturza01/AppleStore.csv&#39;</span><span class="p">)</span>
+<span class="n">store</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>id</th>
+      <th>app</th>
+      <th>size</th>
+      <th>currency</th>
+      <th>price</th>
+      <th>reviews</th>
+      <th>rating_count_ver</th>
+      <th>rating</th>
+      <th>user_rating_ver</th>
+      <th>ver</th>
+      <th>cont_rating</th>
+      <th>Genre</th>
+      <th>sup_devices.num</th>
+      <th>ipadSc_urls.num</th>
+      <th>lang.num</th>
+      <th>vpp_lic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>281656475</td>
+      <td>PAC-MAN Premium</td>
+      <td>100788224</td>
+      <td>USD</td>
+      <td>399</td>
+      <td>21292</td>
+      <td>26</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>6.3.5</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>281796108</td>
+      <td>Evernote - stay organized</td>
+      <td>158578688</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>161065</td>
+      <td>26</td>
+      <td>4.0</td>
+      <td>3.5</td>
+      <td>8.2.2</td>
+      <td>0</td>
+      <td>Productivity</td>
+      <td>37</td>
+      <td>5</td>
+      <td>23</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>281940292</td>
+      <td>WeatherBug - Local Weather, Radar, Maps, Alerts</td>
+      <td>100524032</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>188583</td>
+      <td>2822</td>
+      <td>3.5</td>
+      <td>4.5</td>
+      <td>5.0.0</td>
+      <td>0</td>
+      <td>Weather</td>
+      <td>37</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>282614216</td>
+      <td>eBay: Best App to Buy, Sell, Save! Online Shop...</td>
+      <td>128512000</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>262241</td>
+      <td>649</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>5.10.0</td>
+      <td>12</td>
+      <td>Shopping</td>
+      <td>37</td>
+      <td>5</td>
+      <td>9</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>282935706</td>
+      <td>Bible</td>
+      <td>92774400</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>985920</td>
+      <td>5320</td>
+      <td>4.5</td>
+      <td>5.0</td>
+      <td>7.5.1</td>
+      <td>0</td>
+      <td>Reference</td>
+      <td>37</td>
+      <td>5</td>
+      <td>45</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>283619399</td>
+      <td>Shanghai Mahjong</td>
+      <td>10485713</td>
+      <td>USD</td>
+      <td>99</td>
+      <td>8253</td>
+      <td>5516</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>47</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>283646709</td>
+      <td>PayPal - Send and request money safely</td>
+      <td>227795968</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>119487</td>
+      <td>879</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>6.12.0</td>
+      <td>0</td>
+      <td>Finance</td>
+      <td>37</td>
+      <td>0</td>
+      <td>19</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>284035177</td>
+      <td>Pandora - Music &amp; Radio</td>
+      <td>130242560</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>1126879</td>
+      <td>3594</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>8.4.1</td>
+      <td>12</td>
+      <td>Music</td>
+      <td>37</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>284666222</td>
+      <td>PCalc - The Best Calculator</td>
+      <td>49250304</td>
+      <td>USD</td>
+      <td>999</td>
+      <td>1117</td>
+      <td>4</td>
+      <td>4.5</td>
+      <td>5.0</td>
+      <td>3.6.6</td>
+      <td>0</td>
+      <td>Utilities</td>
+      <td>37</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>284736660</td>
+      <td>Ms. PAC-MAN</td>
+      <td>70023168</td>
+      <td>USD</td>
+      <td>399</td>
+      <td>7885</td>
+      <td>40</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>4.0.4</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>0</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>284791396</td>
+      <td>Solitaire by MobilityWare</td>
+      <td>49618944</td>
+      <td>USD</td>
+      <td>499</td>
+      <td>76720</td>
+      <td>4017</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>4.10.1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>4</td>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>284815117</td>
+      <td>SCRABBLE Premium</td>
+      <td>227547136</td>
+      <td>USD</td>
+      <td>799</td>
+      <td>105776</td>
+      <td>166</td>
+      <td>3.5</td>
+      <td>2.5</td>
+      <td>5.19.0</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>0</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>284815942</td>
+      <td>Google – Search made just for mobile</td>
+      <td>179979264</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>479440</td>
+      <td>203</td>
+      <td>3.5</td>
+      <td>4.0</td>
+      <td>27</td>
+      <td>17</td>
+      <td>Utilities</td>
+      <td>37</td>
+      <td>4</td>
+      <td>33</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>284847138</td>
+      <td>Bank of America - Mobile Banking</td>
+      <td>160925696</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>119773</td>
+      <td>2336</td>
+      <td>3.5</td>
+      <td>4.5</td>
+      <td>7.3.8</td>
+      <td>0</td>
+      <td>Finance</td>
+      <td>37</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>284862767</td>
+      <td>FreeCell</td>
+      <td>55153664</td>
+      <td>USD</td>
+      <td>499</td>
+      <td>6340</td>
+      <td>668</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>4.0.3</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>284876795</td>
+      <td>TripAdvisor Hotels Flights Restaurants</td>
+      <td>207907840</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>56194</td>
+      <td>87</td>
+      <td>4.0</td>
+      <td>3.5</td>
+      <td>21.1</td>
+      <td>0</td>
+      <td>Travel</td>
+      <td>37</td>
+      <td>1</td>
+      <td>26</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>284882215</td>
+      <td>Facebook</td>
+      <td>389879808</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>2974676</td>
+      <td>212</td>
+      <td>3.5</td>
+      <td>3.5</td>
+      <td>95</td>
+      <td>0</td>
+      <td>Social Networking</td>
+      <td>37</td>
+      <td>1</td>
+      <td>29</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>284910350</td>
+      <td>Yelp - Nearby Restaurants, Shopping &amp; Services</td>
+      <td>167407616</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>223885</td>
+      <td>3726</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>11.15.0</td>
+      <td>12</td>
+      <td>Travel</td>
+      <td>37</td>
+      <td>5</td>
+      <td>18</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>20</td>
+      <td>284993459</td>
+      <td>Shazam - Discover music, artists, videos &amp; lyrics</td>
+      <td>147093504</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>402925</td>
+      <td>136</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>11.0.3</td>
+      <td>12</td>
+      <td>Music</td>
+      <td>37</td>
+      <td>3</td>
+      <td>16</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>21</td>
+      <td>285005463</td>
+      <td>Crash Bandicoot Nitro Kart 3D</td>
+      <td>10735026</td>
+      <td>USD</td>
+      <td>299</td>
+      <td>31456</td>
+      <td>4178</td>
+      <td>4.0</td>
+      <td>3.5</td>
+      <td>1.0.0</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>47</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>22</td>
+      <td>285946052</td>
+      <td>iQuran</td>
+      <td>70707916</td>
+      <td>USD</td>
+      <td>199</td>
+      <td>2929</td>
+      <td>966</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>3.3</td>
+      <td>0</td>
+      <td>Reference</td>
+      <td>43</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>23</td>
+      <td>285994151</td>
+      <td>:) Sudoku +</td>
+      <td>6169600</td>
+      <td>USD</td>
+      <td>299</td>
+      <td>11447</td>
+      <td>781</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>5.2.6</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>24</td>
+      <td>286058814</td>
+      <td>Yahoo Sports - Teams, Scores, News &amp; Highlights</td>
+      <td>130583552</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>137951</td>
+      <td>131</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>6.9</td>
+      <td>0</td>
+      <td>Sports</td>
+      <td>37</td>
+      <td>2</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>25</td>
+      <td>286070473</td>
+      <td>Mileage Log | Fahrtenbuch</td>
+      <td>71203840</td>
+      <td>USD</td>
+      <td>599</td>
+      <td>8</td>
+      <td>0</td>
+      <td>4.5</td>
+      <td>0.0</td>
+      <td>9.0.5</td>
+      <td>0</td>
+      <td>Business</td>
+      <td>37</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>27</td>
+      <td>286799607</td>
+      <td>Cleartune - Chromatic Tuner</td>
+      <td>11423008</td>
+      <td>USD</td>
+      <td>399</td>
+      <td>3241</td>
+      <td>297</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>2.1.3</td>
+      <td>0</td>
+      <td>Music</td>
+      <td>43</td>
+      <td>2</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>28</td>
+      <td>286906691</td>
+      <td>Lifesum – Inspiring healthy lifestyle app</td>
+      <td>188017664</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>5795</td>
+      <td>12</td>
+      <td>3.5</td>
+      <td>4.0</td>
+      <td>8.4.1</td>
+      <td>0</td>
+      <td>Health &amp; Fitness</td>
+      <td>37</td>
+      <td>5</td>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>29</td>
+      <td>286911400</td>
+      <td>Hangman.</td>
+      <td>4765696</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>42316</td>
+      <td>248</td>
+      <td>3.0</td>
+      <td>3.5</td>
+      <td>2.0.6</td>
+      <td>9</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>31</td>
+      <td>288113403</td>
+      <td>iTranslate - Language Translator &amp; Dictionary</td>
+      <td>287933440</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>123215</td>
+      <td>25</td>
+      <td>3.5</td>
+      <td>5.0</td>
+      <td>10.5.4</td>
+      <td>0</td>
+      <td>Productivity</td>
+      <td>37</td>
+      <td>5</td>
+      <td>23</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>32</td>
+      <td>288120394</td>
+      <td>TouchOSC</td>
+      <td>4263936</td>
+      <td>USD</td>
+      <td>499</td>
+      <td>782</td>
+      <td>7</td>
+      <td>4.0</td>
+      <td>3.5</td>
+      <td>1.9.8</td>
+      <td>0</td>
+      <td>Music</td>
+      <td>43</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>33</td>
+      <td>288419283</td>
+      <td>RadarScope</td>
+      <td>172772352</td>
+      <td>USD</td>
+      <td>999</td>
+      <td>3449</td>
+      <td>23</td>
+      <td>4.0</td>
+      <td>4.5</td>
+      <td>3.4.1</td>
+      <td>0</td>
+      <td>Weather</td>
+      <td>37</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7167</th>
+      <td>10995</td>
+      <td>1182265441</td>
+      <td>脱出ゲーム　わたしをみつけて　-おじいさんとわたしの物語-</td>
+      <td>177498112</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0.1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7168</th>
+      <td>10998</td>
+      <td>1182331762</td>
+      <td>Escape from the frigid Igloo.</td>
+      <td>89188352</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0.1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7169</th>
+      <td>11002</td>
+      <td>1182568288</td>
+      <td>Talking Santa - Video santa claus calls you</td>
+      <td>32685056</td>
+      <td>USD</td>
+      <td>299</td>
+      <td>9</td>
+      <td>3</td>
+      <td>3.0</td>
+      <td>3.5</td>
+      <td>1.0.1</td>
+      <td>0</td>
+      <td>Entertainment</td>
+      <td>37</td>
+      <td>0</td>
+      <td>31</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7170</th>
+      <td>11010</td>
+      <td>1183234072</td>
+      <td>CTFxCmoji</td>
+      <td>26077184</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>39</td>
+      <td>4</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.3</td>
+      <td>9</td>
+      <td>Social Networking</td>
+      <td>37</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7171</th>
+      <td>11013</td>
+      <td>1183260922</td>
+      <td>Room Escape Game - Santa's Room</td>
+      <td>143346688</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>10</td>
+      <td>10</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7172</th>
+      <td>11016</td>
+      <td>1183548754</td>
+      <td>Rescue the Enchanter</td>
+      <td>242505728</td>
+      <td>USD</td>
+      <td>399</td>
+      <td>55</td>
+      <td>29</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>1.4</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7173</th>
+      <td>11019</td>
+      <td>1183709176</td>
+      <td>My Diary - 你的名字非官方</td>
+      <td>18164736</td>
+      <td>USD</td>
+      <td>99</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.1</td>
+      <td>0</td>
+      <td>Utilities</td>
+      <td>37</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7174</th>
+      <td>11022</td>
+      <td>1183856228</td>
+      <td>VR Thrills: Roller Coaster 360 (Google Cardboard)</td>
+      <td>169535488</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>14</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>3.5</td>
+      <td>1.3.0</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7175</th>
+      <td>11024</td>
+      <td>1183986102</td>
+      <td>Santa Kids Hair Salon - Christmas Makeover Games</td>
+      <td>64244736</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>41</td>
+      <td>19</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>1.3</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>5</td>
+      <td>25</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7176</th>
+      <td>11027</td>
+      <td>1184711626</td>
+      <td>Human Juggling Cup</td>
+      <td>184324096</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0.1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7177</th>
+      <td>11031</td>
+      <td>1184800011</td>
+      <td>Again - room escape game</td>
+      <td>33946624</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>11</td>
+      <td>8</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.1.0</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7178</th>
+      <td>11033</td>
+      <td>1185209084</td>
+      <td>Saloons Unleashed</td>
+      <td>327731200</td>
+      <td>USD</td>
+      <td>99</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7179</th>
+      <td>11035</td>
+      <td>1185328193</td>
+      <td>Fam — Group video calling for iMessage</td>
+      <td>113382400</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>279</td>
+      <td>5</td>
+      <td>3.5</td>
+      <td>3.0</td>
+      <td>0.6.41</td>
+      <td>0</td>
+      <td>Social Networking</td>
+      <td>37</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7180</th>
+      <td>11036</td>
+      <td>1185365336</td>
+      <td>Laurie Hernandez the Human Emoji</td>
+      <td>94008320</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>26</td>
+      <td>3</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0.5</td>
+      <td>9</td>
+      <td>Utilities</td>
+      <td>37</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7181</th>
+      <td>11038</td>
+      <td>1185428381</td>
+      <td>剑倚手游</td>
+      <td>178160640</td>
+      <td>USD</td>
+      <td>99</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>9</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7182</th>
+      <td>11040</td>
+      <td>1185538497</td>
+      <td>camera for filter</td>
+      <td>9362432</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0.3</td>
+      <td>0</td>
+      <td>Photo &amp; Video</td>
+      <td>37</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7183</th>
+      <td>11041</td>
+      <td>1185580782</td>
+      <td>Survivalcraft 2</td>
+      <td>57349120</td>
+      <td>USD</td>
+      <td>399</td>
+      <td>292</td>
+      <td>292</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>2.0.20.1</td>
+      <td>9</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7184</th>
+      <td>11042</td>
+      <td>1185731859</td>
+      <td>剑客情缘-高爆率高掉落天天疯玩</td>
+      <td>171944960</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>9</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7185</th>
+      <td>11043</td>
+      <td>1185777521</td>
+      <td>问仙奇遇-新玩法新套装嗨到爆</td>
+      <td>208026624</td>
+      <td>USD</td>
+      <td>99</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>9</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7186</th>
+      <td>11050</td>
+      <td>1186108496</td>
+      <td>脱出ゲーム - 書道教室 -  "漢字"の謎に満ちた部屋からの 脱出</td>
+      <td>85580800</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0.1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7187</th>
+      <td>11051</td>
+      <td>1186126548</td>
+      <td>Escape Game: illumination</td>
+      <td>52342784</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>23</td>
+      <td>23</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7188</th>
+      <td>11060</td>
+      <td>1186384912</td>
+      <td>Demolition Derby Virtual Reality (VR) Racing</td>
+      <td>168774656</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>18</td>
+      <td>18</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0.0</td>
+      <td>12</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7189</th>
+      <td>11074</td>
+      <td>1187128255</td>
+      <td>飞刀传奇-动作武侠热血江湖即时PK传奇（登录爆金装）</td>
+      <td>537462784</td>
+      <td>USD</td>
+      <td>99</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.1.0</td>
+      <td>9</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7190</th>
+      <td>11077</td>
+      <td>1187279979</td>
+      <td>Add-Ons Studio for Minecraft</td>
+      <td>22999040</td>
+      <td>USD</td>
+      <td>299</td>
+      <td>97</td>
+      <td>97</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7191</th>
+      <td>11079</td>
+      <td>1187282363</td>
+      <td>Plead the Fifth - The Game</td>
+      <td>27853824</td>
+      <td>USD</td>
+      <td>299</td>
+      <td>11</td>
+      <td>0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>1.1.1</td>
+      <td>17</td>
+      <td>Games</td>
+      <td>37</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7192</th>
+      <td>11081</td>
+      <td>1187617475</td>
+      <td>Kubik</td>
+      <td>126644224</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>142</td>
+      <td>75</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>1.3</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7193</th>
+      <td>11082</td>
+      <td>1187682390</td>
+      <td>VR Roller-Coaster</td>
+      <td>120760320</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>30</td>
+      <td>30</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>0.9</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7194</th>
+      <td>11087</td>
+      <td>1187779532</td>
+      <td>Bret Michaels Emojis + Lyric Keyboard</td>
+      <td>111322112</td>
+      <td>USD</td>
+      <td>199</td>
+      <td>15</td>
+      <td>0</td>
+      <td>4.5</td>
+      <td>0.0</td>
+      <td>1.0.2</td>
+      <td>9</td>
+      <td>Utilities</td>
+      <td>37</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7195</th>
+      <td>11089</td>
+      <td>1187838770</td>
+      <td>VR Roller Coaster World - Virtual Reality</td>
+      <td>97235968</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>85</td>
+      <td>32</td>
+      <td>4.5</td>
+      <td>4.5</td>
+      <td>1.0.15</td>
+      <td>12</td>
+      <td>Games</td>
+      <td>38</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7196</th>
+      <td>11097</td>
+      <td>1188375727</td>
+      <td>Escape the Sweet Shop Series</td>
+      <td>90898432</td>
+      <td>USD</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Games</td>
+      <td>40</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>7197 rows × 17 columns</p>
+</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">199134453.825066</span>
+</pre></div>
+</div>
+<div class="section" id="bar-chart-for-count-of-each-amount-of-price">
+<h1>Bar Chart for Count of each amount of Price<a class="headerlink" href="#bar-chart-for-count-of-each-amount-of-price" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criteria1</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">paidapps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">criteria1</span><span class="p">]</span>
+<span class="n">paidapps</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Int64Index</span><span class="p">([</span>   <span class="mi">0</span><span class="p">,</span>    <span class="mi">5</span><span class="p">,</span>    <span class="mi">8</span><span class="p">,</span>    <span class="mi">9</span><span class="p">,</span>   <span class="mi">10</span><span class="p">,</span>   <span class="mi">11</span><span class="p">,</span>   <span class="mi">14</span><span class="p">,</span>   <span class="mi">19</span><span class="p">,</span>   <span class="mi">20</span><span class="p">,</span>   <span class="mi">21</span><span class="p">,</span>
+            <span class="o">...</span>
+            <span class="mi">7172</span><span class="p">,</span> <span class="mi">7173</span><span class="p">,</span> <span class="mi">7178</span><span class="p">,</span> <span class="mi">7181</span><span class="p">,</span> <span class="mi">7183</span><span class="p">,</span> <span class="mi">7185</span><span class="p">,</span> <span class="mi">7189</span><span class="p">,</span> <span class="mi">7190</span><span class="p">,</span> <span class="mi">7191</span><span class="p">,</span> <span class="mi">7194</span><span class="p">],</span>
+           <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">3141</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">paidappcount</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">paidappcount</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>      <span class="mi">4056</span>
+<span class="mi">99</span>      <span class="mi">728</span>
+<span class="mi">299</span>     <span class="mi">683</span>
+<span class="mi">199</span>     <span class="mi">621</span>
+<span class="mi">499</span>     <span class="mi">394</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">price</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiapp</span> <span class="o">=</span> <span class="n">paidappcount</span><span class="p">[</span><span class="n">paidappcount</span><span class="o">.</span><span class="n">values</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">multiapp</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Int64Index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">499</span><span class="p">,</span> <span class="mi">399</span><span class="p">,</span> <span class="mi">699</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="mi">599</span><span class="p">,</span> <span class="mi">799</span><span class="p">,</span> <span class="mi">1499</span><span class="p">,</span> <span class="mi">1999</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiapp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f518df02908</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_7_11.png" src="../../../_images/output_7_11.png" />
+</div>
+<div class="section" id="total-price-of-paid-apps-in-each-genre">
+<h1>Total Price of Paid Apps in each Genre<a class="headerlink" href="#total-price-of-paid-apps-in-each-genre" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">storeprod</span> <span class="o">=</span> <span class="n">store</span><span class="p">[[</span><span class="s2">&quot;Genre&quot;</span><span class="p">,</span><span class="s2">&quot;price&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TotalPriceByGenre</span> <span class="o">=</span> <span class="n">storeprod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Genre&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TotalPriceByGenre</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+    </tr>
+    <tr>
+      <th>Genre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Games</th>
+      <td>553395</td>
+    </tr>
+    <tr>
+      <th>Education</th>
+      <td>182479</td>
+    </tr>
+    <tr>
+      <th>Productivity</th>
+      <td>77084</td>
+    </tr>
+    <tr>
+      <th>Music</th>
+      <td>66729</td>
+    </tr>
+    <tr>
+      <th>Photo &amp; Video</th>
+      <td>51418</td>
+    </tr>
+    <tr>
+      <th>Entertainment</th>
+      <td>47599</td>
+    </tr>
+    <tr>
+      <th>Utilities</th>
+      <td>40861</td>
+    </tr>
+    <tr>
+      <th>Health &amp; Fitness</th>
+      <td>34496</td>
+    </tr>
+    <tr>
+      <th>Reference</th>
+      <td>30956</td>
+    </tr>
+    <tr>
+      <th>Business</th>
+      <td>29163</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TotalPriceByGenre</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f518e3c0358</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_12_11.png" src="../../../_images/output_12_11.png" />
+</div>
+<div class="section" id="box-and-whisker-graph-to-show-user-rating-vs-app-rating">
+<h1>Box and Whisker Graph to show User Rating VS App Rating<a class="headerlink" href="#box-and-whisker-graph-to-show-user-rating-vs-app-rating" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">store</span><span class="p">[[</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span><span class="s2">&quot;user_rating_ver&quot;</span><span class="p">]]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rating</th>
+      <th>user_rating_ver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.5</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>4.5</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3.5</td>
+      <td>2.5</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3.5</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>4.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3.5</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>4.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>4.5</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>3.5</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>3.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>3.5</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>4.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>4.0</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>7167</th>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7168</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>7169</th>
+      <td>3.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>7170</th>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7171</th>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7172</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7173</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7174</th>
+      <td>4.0</td>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>7175</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7176</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7177</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>7178</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7179</th>
+      <td>3.5</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7180</th>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7181</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7182</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7183</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>7184</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7185</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7186</th>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>7187</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7188</th>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>7189</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7190</th>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7191</th>
+      <td>4.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7192</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7193</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7194</th>
+      <td>4.5</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7195</th>
+      <td>4.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>7196</th>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>7197 rows × 2 columns</p>
+</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;rs&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">KeyboardInterrupt</span>                         <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">983</span><span class="n">a8fbf8c08</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;rs&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+      <span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">pyplot</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">notch</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">vert</span><span class="p">,</span> <span class="n">whis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">patch_artist</span><span class="p">,</span> <span class="n">bootstrap</span><span class="p">,</span> <span class="n">usermedians</span><span class="p">,</span> <span class="n">conf_intervals</span><span class="p">,</span> <span class="n">meanline</span><span class="p">,</span> <span class="n">showmeans</span><span class="p">,</span> <span class="n">showcaps</span><span class="p">,</span> <span class="n">showbox</span><span class="p">,</span> <span class="n">showfliers</span><span class="p">,</span> <span class="n">boxprops</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">flierprops</span><span class="p">,</span> <span class="n">medianprops</span><span class="p">,</span> <span class="n">meanprops</span><span class="p">,</span> <span class="n">capprops</span><span class="p">,</span> <span class="n">whiskerprops</span><span class="p">,</span> <span class="n">manage_xticks</span><span class="p">,</span> <span class="n">autorange</span><span class="p">,</span> <span class="n">zorder</span><span class="p">,</span> <span class="n">hold</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+   <span class="mi">2846</span>                          <span class="n">whiskerprops</span><span class="o">=</span><span class="n">whiskerprops</span><span class="p">,</span>
+   <span class="mi">2847</span>                          <span class="n">manage_xticks</span><span class="o">=</span><span class="n">manage_xticks</span><span class="p">,</span> <span class="n">autorange</span><span class="o">=</span><span class="n">autorange</span><span class="p">,</span>
+<span class="o">-&gt;</span> <span class="mi">2848</span>                          <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+   <span class="mi">2849</span>     <span class="k">finally</span><span class="p">:</span>
+   <span class="mi">2850</span>         <span class="n">ax</span><span class="o">.</span><span class="n">_hold</span> <span class="o">=</span> <span class="n">washold</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">1853</span>                         <span class="s2">&quot;the Matplotlib list!)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label_namer</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">),</span>
+   <span class="mi">1854</span>                         <span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="mi">1855</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">1856</span>
+   <span class="mi">1857</span>         <span class="n">inner</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_add_data_doc</span><span class="p">(</span><span class="n">inner</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">,</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">axes</span><span class="o">/</span><span class="n">_axes</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">boxplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">notch</span><span class="p">,</span> <span class="n">sym</span><span class="p">,</span> <span class="n">vert</span><span class="p">,</span> <span class="n">whis</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">patch_artist</span><span class="p">,</span> <span class="n">bootstrap</span><span class="p">,</span> <span class="n">usermedians</span><span class="p">,</span> <span class="n">conf_intervals</span><span class="p">,</span> <span class="n">meanline</span><span class="p">,</span> <span class="n">showmeans</span><span class="p">,</span> <span class="n">showcaps</span><span class="p">,</span> <span class="n">showbox</span><span class="p">,</span> <span class="n">showfliers</span><span class="p">,</span> <span class="n">boxprops</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">flierprops</span><span class="p">,</span> <span class="n">medianprops</span><span class="p">,</span> <span class="n">meanprops</span><span class="p">,</span> <span class="n">capprops</span><span class="p">,</span> <span class="n">whiskerprops</span><span class="p">,</span> <span class="n">manage_xticks</span><span class="p">,</span> <span class="n">autorange</span><span class="p">,</span> <span class="n">zorder</span><span class="p">)</span>
+   <span class="mi">3667</span>                            <span class="n">meanline</span><span class="o">=</span><span class="n">meanline</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="n">showfliers</span><span class="p">,</span>
+   <span class="mi">3668</span>                            <span class="n">capprops</span><span class="o">=</span><span class="n">capprops</span><span class="p">,</span> <span class="n">whiskerprops</span><span class="o">=</span><span class="n">whiskerprops</span><span class="p">,</span>
+<span class="o">-&gt;</span> <span class="mi">3669</span>                            <span class="n">manage_xticks</span><span class="o">=</span><span class="n">manage_xticks</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">)</span>
+   <span class="mi">3670</span>         <span class="k">return</span> <span class="n">artists</span>
+   <span class="mi">3671</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">axes</span><span class="o">/</span><span class="n">_axes</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">bxp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bxpstats</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">vert</span><span class="p">,</span> <span class="n">patch_artist</span><span class="p">,</span> <span class="n">shownotches</span><span class="p">,</span> <span class="n">showmeans</span><span class="p">,</span> <span class="n">showcaps</span><span class="p">,</span> <span class="n">showbox</span><span class="p">,</span> <span class="n">showfliers</span><span class="p">,</span> <span class="n">boxprops</span><span class="p">,</span> <span class="n">whiskerprops</span><span class="p">,</span> <span class="n">flierprops</span><span class="p">,</span> <span class="n">medianprops</span><span class="p">,</span> <span class="n">capprops</span><span class="p">,</span> <span class="n">meanprops</span><span class="p">,</span> <span class="n">meanline</span><span class="p">,</span> <span class="n">manage_xticks</span><span class="p">,</span> <span class="n">zorder</span><span class="p">)</span>
+   <span class="mi">4034</span>
+   <span class="mi">4035</span>             <span class="c1"># draw the medians</span>
+<span class="o">-&gt;</span> <span class="mi">4036</span>             <span class="n">medians</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">doplot</span><span class="p">(</span><span class="n">med_x</span><span class="p">,</span> <span class="n">med_y</span><span class="p">,</span> <span class="o">**</span><span class="n">final_medianprops</span><span class="p">))</span>
+   <span class="mi">4037</span>
+   <span class="mi">4038</span>             <span class="c1"># maybe draw the means</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">axes</span><span class="o">/</span><span class="n">_axes</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">doplot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">3946</span>                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+   <span class="mi">3947</span>                     <span class="n">shuffled</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">args</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+<span class="o">-&gt;</span> <span class="mi">3948</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">shuffled</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">3949</span>
+   <span class="mi">3950</span>             <span class="k">def</span> <span class="nf">dopatch</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">inner</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">1853</span>                         <span class="s2">&quot;the Matplotlib list!)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label_namer</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">),</span>
+   <span class="mi">1854</span>                         <span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">-&gt;</span> <span class="mi">1855</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">1856</span>
+   <span class="mi">1857</span>         <span class="n">inner</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_add_data_doc</span><span class="p">(</span><span class="n">inner</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">,</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">axes</span><span class="o">/</span><span class="n">_axes</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+   <span class="mi">1529</span>             <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+   <span class="mi">1530</span>
+<span class="o">-&gt;</span> <span class="mi">1531</span>         <span class="bp">self</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">(</span><span class="n">scalex</span><span class="o">=</span><span class="n">scalex</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="n">scaley</span><span class="p">)</span>
+   <span class="mi">1532</span>         <span class="k">return</span> <span class="n">lines</span>
+   <span class="mi">1533</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">axes</span><span class="o">/</span><span class="n">_base</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">autoscale_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tight</span><span class="p">,</span> <span class="n">scalex</span><span class="p">,</span> <span class="n">scaley</span><span class="p">)</span>
+   <span class="mi">2519</span>         <span class="n">handle_single_axis</span><span class="p">(</span>
+   <span class="mi">2520</span>             <span class="n">scaley</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_autoscaleYon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_y_axes</span><span class="p">,</span> <span class="s1">&#39;intervaly&#39;</span><span class="p">,</span>
+<span class="o">-&gt;</span> <span class="mi">2521</span>             <span class="s1">&#39;minposy&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">yaxis</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ymargin</span><span class="p">,</span> <span class="n">y_stickies</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_ybound</span><span class="p">)</span>
+   <span class="mi">2522</span>
+   <span class="mi">2523</span>     <span class="k">def</span> <span class="nf">_get_axis_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib</span><span class="o">/</span><span class="n">axes</span><span class="o">/</span><span class="n">_base</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="n">handle_single_axis</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">autoscaleon</span><span class="p">,</span> <span class="n">shared_axes</span><span class="p">,</span> <span class="n">interval</span><span class="p">,</span> <span class="n">minpos</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">stickies</span><span class="p">,</span> <span class="n">set_bound</span><span class="p">)</span>
+   <span class="mi">2499</span>             <span class="c1"># with streamplot.</span>
+   <span class="mi">2500</span>             <span class="n">do_lower_margin</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">stickies</span><span class="p">))</span>
+<span class="o">-&gt;</span> <span class="mi">2501</span>             <span class="n">do_upper_margin</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">stickies</span><span class="p">))</span>
+   <span class="mi">2502</span>             <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">_scale</span><span class="o">.</span><span class="n">limit_range_for_scale</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">minpos</span><span class="p">)</span>
+   <span class="mi">2503</span>             <span class="n">x0t</span><span class="p">,</span> <span class="n">x1t</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">])</span>
+
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">5</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">numpy</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">fromnumeric</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="nb">any</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span>
+   <span class="mi">2013</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">   2014     arr = asanyarray(a)</span>
+<span class="s2">-&gt; 2015     kwargs = </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">   2016     if keepdims is not np._NoValue:</span>
+<span class="s2">   2017         kwargs[&#39;keepdims&#39;] = keepdims</span>
+
+
+<span class="s2">KeyboardInterrupt:</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_15_11.png" src="../../../_images/output_15_11.png" />
+</div>
+<div class="section" id="super-ugly-area-plot-for-app-rating-vs-user-rating">
+<h1>Super Ugly Area Plot for App Rating VS User Rating<a class="headerlink" href="#super-ugly-area-plot-for-app-rating-vs-user-rating" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+
+<span class="ne">NameError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="n">ce9ef87c13df</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+
+
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;data&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f518e044160</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_18_11.png" src="../../../_images/output_18_11.png" />
+</div>
+<div class="section" id="bar-chart-for-count-of-content-rating">
+<h1>Bar Chart for Count of Content Rating<a class="headerlink" href="#bar-chart-for-count-of-content-rating" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">priceratedR</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">==</span><span class="mi">17</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">priceratedT</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">==</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">priceratedE</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+<span class="n">PriceContRating</span> <span class="o">=</span> <span class="n">priceratedR</span><span class="p">,</span> <span class="n">priceratedT</span><span class="p">,</span> <span class="n">priceratedE</span>
+<span class="n">contratingcount</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="s2">&quot;cont_rating&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">contratingcount</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>     <span class="mi">4433</span>
+<span class="mi">12</span>    <span class="mi">1155</span>
+<span class="mi">9</span>      <span class="mi">987</span>
+<span class="mi">17</span>     <span class="mi">622</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">cont_rating</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">contratingcount</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x7f518797b278</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_21_11.png" src="../../../_images/output_21_11.png" />
+</div>
+<div class="section" id="pie-chart-for-free-vs-paid-app-counts">
+<h1>Pie Chart for Free VS Paid App Counts<a class="headerlink" href="#pie-chart-for-free-vs-paid-app-counts" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">free_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">paid_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">,</span> <span class="s1">&#39;Paid Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">free_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">paid_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie chart of app price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">function</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_24_11.png" src="../../../_images/output_24_11.png" />
+</div>
+<div class="section" id="most-expensive-apps-by-genre">
+<h1>Most Expensive Apps By Genre<a class="headerlink" href="#most-expensive-apps-by-genre" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genre_expens_app</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Genre&#39;</span><span class="p">])[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">expens_app</span> <span class="o">=</span> <span class="n">genre_expens_app</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">store</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">expens_app</span><span class="p">[[</span><span class="s1">&#39;Genre&#39;</span><span class="p">,</span><span class="s1">&#39;app&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Genre</th>
+      <th>app</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>Education</td>
+      <td>LAMP Words For Life</td>
+      <td>29999</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Productivity</td>
+      <td>KNFB Reader</td>
+      <td>9999</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Navigation</td>
+      <td>NAVIGON Europe</td>
+      <td>7499</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Business</td>
+      <td>FineScanner Pro - PDF Document Scanner App + OCR</td>
+      <td>5999</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Music</td>
+      <td>Cubasis 2 - Mobile Music Creation System</td>
+      <td>4999</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Reference</td>
+      <td>プチ・ロワイヤル仏和辞典（第4版）・和仏辞典（第3版）</td>
+      <td>4799</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Medical</td>
+      <td>Anatomy &amp; Physiology: Body Structures and Func...</td>
+      <td>3499</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Games</td>
+      <td>Extreme Landings Pro</td>
+      <td>2999</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Book</td>
+      <td>The Complete Adventures of Pan (Books 1-7)</td>
+      <td>2799</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Food &amp; Drink</td>
+      <td>美食杰-让吃饭变简单(VIP版)</td>
+      <td>2799</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Utilities</td>
+      <td>T Air for DVD</td>
+      <td>2499</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Photo &amp; Video</td>
+      <td>Litchi for DJI Mavic/Phantom/Inspire</td>
+      <td>2299</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Sports</td>
+      <td>iStatVball 2 iPad Edition</td>
+      <td>1999</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Travel</td>
+      <td>OBD Fusion - OBD2 vehicle scan tool &amp; diagnostics</td>
+      <td>999</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Social Networking</td>
+      <td>Tweetbot 4 for Twitter</td>
+      <td>999</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Weather</td>
+      <td>RadarScope</td>
+      <td>999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Entertainment</td>
+      <td>Lucky Cactus</td>
+      <td>999</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Health &amp; Fitness</td>
+      <td>Instant Fitness : 600+ exercises, 100+ workout...</td>
+      <td>999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Catalogs</td>
+      <td>My Movies Pro - Movie &amp; TV Collection Library</td>
+      <td>799</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Finance</td>
+      <td>Stock Market Pro: Stock Trading, Charts &amp; Alerts</td>
+      <td>599</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div class="section" id="bar-chart-for-rating-of-free-vs-paid-apps">
+<h1>Bar Chart For Rating of Free VS. Paid Apps<a class="headerlink" href="#bar-chart-for-rating-of-free-vs-paid-apps" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">free_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Free Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">paid_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Paid Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Paid Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_29_01.png" src="../../../_images/output_29_01.png" />
+</div>
+<div class="section" id="pie-chart-for-size-comparison">
+<h1>Pie Chart for Size Comparison<a class="headerlink" href="#pie-chart-for-size-comparison" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">large_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20000000</span><span class="p">]</span>
+<span class="n">small_apps</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">20000000</span><span class="p">]</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Large apps &gt; 20MB&#39;</span><span class="p">,</span> <span class="s1">&#39;Small apps &lt; 20MB&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">large_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">small_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie chart of app size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">function</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_31_11.png" src="../../../_images/output_31_11.png" />
+</div>
+<div class="section" id="pie-chart-for-reviews">
+<h1>Pie Chart for Reviews<a class="headerlink" href="#pie-chart-for-reviews" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>    <span class="mf">7.197000e+03</span>
+<span class="n">mean</span>     <span class="mf">1.289291e+04</span>
+<span class="n">std</span>      <span class="mf">7.573941e+04</span>
+<span class="nb">min</span>      <span class="mf">0.000000e+00</span>
+<span class="mi">25</span><span class="o">%</span>      <span class="mf">2.800000e+01</span>
+<span class="mi">50</span><span class="o">%</span>      <span class="mf">3.000000e+02</span>
+<span class="mi">75</span><span class="o">%</span>      <span class="mf">2.793000e+03</span>
+<span class="nb">max</span>      <span class="mf">2.974676e+06</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">reviews</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crit6</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">250000</span><span class="p">]</span>
+<span class="n">crit7</span> <span class="o">=</span> <span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">250000</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ReviewCountAbove250k</span> <span class="o">=</span> <span class="n">crit6</span>
+<span class="n">ReviewCountBelow250k</span> <span class="o">=</span> <span class="n">crit7</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apps with more than 250k reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;Apps with less than 250k reviews&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ReviewCountAbove250k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ReviewCountBelow250k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie chart of app reviews&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">function</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_35_11.png" src="../../../_images/output_35_11.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">store</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;Genre&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">store</span><span class="p">[</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">],</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Genres&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Apps&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span> <span class="o">+</span> <span class="s1">&#39; Apps&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../../_images/output_36_01.png" src="../../../_images/output_36_01.png" />
+<img alt="../../../_images/output_36_11.png" src="../../../_images/output_36_11.png" />
+<img alt="../../../_images/output_36_21.png" src="../../../_images/output_36_21.png" />
+<img alt="../../../_images/output_36_31.png" src="../../../_images/output_36_31.png" />
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">Data Visualization Website  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Thu &amp; Zach.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2713 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bar Chart for Count of each amount of Price &#8212; Data Visualization Website  documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Data Visualization Website  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Bar Chart for Count of each amount of Price</a></li>
+<li><a class="reference internal" href="#Create-function-to-add-data-to-plot">Create function to add data to plot</a></li>
+<li><a class="reference internal" href="#Compare-apps-with-more-review---popular-or-well-received-apps-vs-less-popular-apps">Compare apps with more review - popular or well-received apps vs less popular apps</a></li>
+<li><a class="reference internal" href="#Compare-size-of-Apps">Compare size of Apps</a></li>
+<li><a class="reference internal" href="#Compare-free-vs-paid-Apps">Compare free vs paid Apps</a></li>
+<li><a class="reference internal" href="#Compare-user-rating-between-free-and-paid-apps">Compare user rating between free and paid apps</a></li>
+<li><a class="reference internal" href="#App-Distribution-by-Genres">App Distribution by Genres</a></li>
+<li><a class="reference internal" href="#Top-20-most-expensive-apps-on-Google-Store-by-Genre">Top 20 most expensive apps on Google Store by Genre</a></li>
+<li><a class="reference internal" href="#Content-Rating">Content Rating</a></li>
+<li><a class="reference internal" href="#Content-rating-by-Genre">Content rating by Genre</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/sphinx/notebooks/Google Data.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+</style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [99]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;google-play-store-apps/googleplaystore.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span>
+<span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[99]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>App</th>
+      <th>Category</th>
+      <th>Rating</th>
+      <th>Reviews</th>
+      <th>Size</th>
+      <th>Installs</th>
+      <th>Type</th>
+      <th>Price</th>
+      <th>cont_rating</th>
+      <th>Genres</th>
+      <th>Last Updated</th>
+      <th>Current Ver</th>
+      <th>Android Ver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Photo Editor &amp; Candy Camera &amp; Grid &amp; ScrapBook</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.1</td>
+      <td>159</td>
+      <td>19M</td>
+      <td>10,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design</td>
+      <td>7-Jan-18</td>
+      <td>1.0.0</td>
+      <td>4.0.3 and up</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Coloring book moana</td>
+      <td>ART_AND_DESIGN</td>
+      <td>3.9</td>
+      <td>967</td>
+      <td>14M</td>
+      <td>500,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design;Pretend Play</td>
+      <td>15-Jan-18</td>
+      <td>2.0.0</td>
+      <td>4.0.3 and up</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>U Launcher Lite äóñ FREE Live Cool Themes, Hid...</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.7</td>
+      <td>87510</td>
+      <td>8.7M</td>
+      <td>5,000,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design</td>
+      <td>1-Aug-18</td>
+      <td>1.2.4</td>
+      <td>4.0.3 and up</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sketch - Draw &amp; Paint</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.5</td>
+      <td>215644</td>
+      <td>25M</td>
+      <td>50,000,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Teen</td>
+      <td>Art &amp; Design</td>
+      <td>8-Jun-18</td>
+      <td>Varies with device</td>
+      <td>4.2 and up</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pixel Draw - Number Art Coloring Book</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.3</td>
+      <td>967</td>
+      <td>2.8M</td>
+      <td>100,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design;Creativity</td>
+      <td>20-Jun-18</td>
+      <td>1.1</td>
+      <td>4.4 and up</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [100]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleReview</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;google-play-store-apps/googleplaystore_user_reviews.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span>
+<span class="n">googleReview</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[100]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>App</th>
+      <th>Translated_Review</th>
+      <th>Sentiment</th>
+      <th>Sentiment_Polarity</th>
+      <th>Sentiment_Subjectivity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10 Best Foods for You</td>
+      <td>I like eat delicious food. That's I'm cooking ...</td>
+      <td>Positive</td>
+      <td>1.00</td>
+      <td>0.533333</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10 Best Foods for You</td>
+      <td>This help eating healthy exercise regular basis</td>
+      <td>Positive</td>
+      <td>0.25</td>
+      <td>0.288462</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10 Best Foods for You</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10 Best Foods for You</td>
+      <td>Works great especially going grocery store</td>
+      <td>Positive</td>
+      <td>0.40</td>
+      <td>0.875000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10 Best Foods for You</td>
+      <td>Best idea us</td>
+      <td>Positive</td>
+      <td>1.00</td>
+      <td>0.300000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [101]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;App&#39;</span><span class="p">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">:</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Reviews&#39;</span><span class="p">:</span> <span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;Size&#39;</span><span class="p">:</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;Genres&#39;</span><span class="p">:</span> <span class="s1">&#39;genres&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [102]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[102]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>app</th>
+      <th>Category</th>
+      <th>rating</th>
+      <th>reviews</th>
+      <th>size</th>
+      <th>Installs</th>
+      <th>Type</th>
+      <th>price</th>
+      <th>cont_rating</th>
+      <th>genres</th>
+      <th>Last Updated</th>
+      <th>Current Ver</th>
+      <th>Android Ver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Photo Editor &amp; Candy Camera &amp; Grid &amp; ScrapBook</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.1</td>
+      <td>159</td>
+      <td>19M</td>
+      <td>10,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design</td>
+      <td>7-Jan-18</td>
+      <td>1.0.0</td>
+      <td>4.0.3 and up</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Coloring book moana</td>
+      <td>ART_AND_DESIGN</td>
+      <td>3.9</td>
+      <td>967</td>
+      <td>14M</td>
+      <td>500,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design;Pretend Play</td>
+      <td>15-Jan-18</td>
+      <td>2.0.0</td>
+      <td>4.0.3 and up</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>U Launcher Lite äóñ FREE Live Cool Themes, Hid...</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.7</td>
+      <td>87510</td>
+      <td>8.7M</td>
+      <td>5,000,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design</td>
+      <td>1-Aug-18</td>
+      <td>1.2.4</td>
+      <td>4.0.3 and up</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sketch - Draw &amp; Paint</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.5</td>
+      <td>215644</td>
+      <td>25M</td>
+      <td>50,000,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Teen</td>
+      <td>Art &amp; Design</td>
+      <td>8-Jun-18</td>
+      <td>Varies with device</td>
+      <td>4.2 and up</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pixel Draw - Number Art Coloring Book</td>
+      <td>ART_AND_DESIGN</td>
+      <td>4.3</td>
+      <td>967</td>
+      <td>2.8M</td>
+      <td>100,000+</td>
+      <td>Free</td>
+      <td>0</td>
+      <td>Everyone</td>
+      <td>Art &amp; Design;Creativity</td>
+      <td>20-Jun-18</td>
+      <td>1.1</td>
+      <td>4.4 and up</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [103]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Installs&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Last Updated&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Ver&#39;</span><span class="p">,</span> <span class="s1">&#39;Android Ver&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Remove ‘$’ from price column</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [104]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;\$&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Cleaning cont_rating column</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [105]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[105]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([&#39;Everyone&#39;, &#39;Teen&#39;, &#39;Everyone 10+&#39;, &#39;Mature 17+&#39;,
+       &#39;Adults only 18+&#39;, &#39;Unrated&#39;, nan], dtype=object)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [106]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Teen&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [107]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Everyone&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [108]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Everyone 10+&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [109]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Mature 17+&#39;</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [110]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Adults only 18+&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [111]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Unrated&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [112]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [113]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">cont_rating</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[113]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([ 0., 12., 17., 18.])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [114]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[114]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>app</th>
+      <th>rating</th>
+      <th>reviews</th>
+      <th>size</th>
+      <th>price</th>
+      <th>cont_rating</th>
+      <th>genres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Photo Editor &amp; Candy Camera &amp; Grid &amp; ScrapBook</td>
+      <td>4.1</td>
+      <td>159</td>
+      <td>19M</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Coloring book moana</td>
+      <td>3.9</td>
+      <td>967</td>
+      <td>14M</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design;Pretend Play</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>U Launcher Lite äóñ FREE Live Cool Themes, Hid...</td>
+      <td>4.7</td>
+      <td>87510</td>
+      <td>8.7M</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sketch - Draw &amp; Paint</td>
+      <td>4.5</td>
+      <td>215644</td>
+      <td>25M</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Art &amp; Design</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pixel Draw - Number Art Coloring Book</td>
+      <td>4.3</td>
+      <td>967</td>
+      <td>2.8M</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design;Creativity</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [115]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [116]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[116]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>app</th>
+      <th>rating</th>
+      <th>reviews</th>
+      <th>size</th>
+      <th>price</th>
+      <th>cont_rating</th>
+      <th>genres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Photo Editor &amp; Candy Camera &amp; Grid &amp; ScrapBook</td>
+      <td>4.1</td>
+      <td>159</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Coloring book moana</td>
+      <td>3.9</td>
+      <td>967</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design;Pretend Play</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>U Launcher Lite äóñ FREE Live Cool Themes, Hid...</td>
+      <td>4.7</td>
+      <td>87510</td>
+      <td>8.7</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sketch - Draw &amp; Paint</td>
+      <td>4.5</td>
+      <td>215644</td>
+      <td>25</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Art &amp; Design</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pixel Draw - Number Art Coloring Book</td>
+      <td>4.3</td>
+      <td>967</td>
+      <td>2.8</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art &amp; Design;Creativity</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">genres</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[64]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([&#39;Art &amp; Design&#39;, &#39;Art &amp; Design;Pretend Play&#39;,
+       &#39;Art &amp; Design;Creativity&#39;, &#39;Art &amp; Design;Action &amp; Adventure&#39;,
+       &#39;Auto &amp; Vehicles&#39;, &#39;Beauty&#39;, &#39;Books &amp; Reference&#39;, &#39;Business&#39;,
+       &#39;Comics&#39;, &#39;Comics;Creativity&#39;, &#39;Communication&#39;, &#39;Dating&#39;,
+       &#39;Education;Education&#39;, &#39;Education&#39;, &#39;Education;Creativity&#39;,
+       &#39;Education;Music &amp; Video&#39;, &#39;Education;Action &amp; Adventure&#39;,
+       &#39;Education;Pretend Play&#39;, &#39;Education;Brain Games&#39;, &#39;Entertainment&#39;,
+       &#39;Entertainment;Music &amp; Video&#39;, &#39;Entertainment;Brain Games&#39;,
+       &#39;Entertainment;Creativity&#39;, &#39;Events&#39;, &#39;Finance&#39;, &#39;Food &amp; Drink&#39;,
+       &#39;Health &amp; Fitness&#39;, &#39;House &amp; Home&#39;, &#39;Libraries &amp; Demo&#39;,
+       &#39;Lifestyle&#39;, &#39;Lifestyle;Pretend Play&#39;,
+       &#39;Adventure;Action &amp; Adventure&#39;, &#39;Arcade&#39;, &#39;Casual&#39;, &#39;Card&#39;,
+       &#39;Casual;Pretend Play&#39;, &#39;Action&#39;, &#39;Strategy&#39;, &#39;Puzzle&#39;, &#39;Sports&#39;,
+       &#39;Music&#39;, &#39;Word&#39;, &#39;Racing&#39;, &#39;Casual;Creativity&#39;,
+       &#39;Casual;Action &amp; Adventure&#39;, &#39;Simulation&#39;, &#39;Adventure&#39;, &#39;Board&#39;,
+       &#39;Trivia&#39;, &#39;Role Playing&#39;, &#39;Simulation;Education&#39;,
+       &#39;Action;Action &amp; Adventure&#39;, &#39;Casual;Brain Games&#39;,
+       &#39;Simulation;Action &amp; Adventure&#39;, &#39;Educational;Creativity&#39;,
+       &#39;Puzzle;Brain Games&#39;, &#39;Educational;Education&#39;, &#39;Card;Brain Games&#39;,
+       &#39;Educational;Brain Games&#39;, &#39;Educational;Pretend Play&#39;,
+       &#39;Entertainment;Education&#39;, &#39;Casual;Education&#39;,
+       &#39;Music;Music &amp; Video&#39;, &#39;Racing;Action &amp; Adventure&#39;,
+       &#39;Arcade;Pretend Play&#39;, &#39;Role Playing;Action &amp; Adventure&#39;,
+       &#39;Simulation;Pretend Play&#39;, &#39;Puzzle;Creativity&#39;,
+       &#39;Sports;Action &amp; Adventure&#39;, &#39;Educational;Action &amp; Adventure&#39;,
+       &#39;Arcade;Action &amp; Adventure&#39;, &#39;Entertainment;Action &amp; Adventure&#39;,
+       &#39;Puzzle;Action &amp; Adventure&#39;, &#39;Strategy;Action &amp; Adventure&#39;,
+       &#39;Music &amp; Audio;Music &amp; Video&#39;, &#39;Health &amp; Fitness;Education&#39;,
+       &#39;Adventure;Education&#39;, &#39;Board;Brain Games&#39;,
+       &#39;Board;Action &amp; Adventure&#39;, &#39;Board;Pretend Play&#39;,
+       &#39;Casual;Music &amp; Video&#39;, &#39;Role Playing;Pretend Play&#39;,
+       &#39;Entertainment;Pretend Play&#39;, &#39;Video Players &amp; Editors;Creativity&#39;,
+       &#39;Card;Action &amp; Adventure&#39;, &#39;Medical&#39;, &#39;Social&#39;, &#39;Shopping&#39;,
+       &#39;Photography&#39;, &#39;Travel &amp; Local&#39;,
+       &#39;Travel &amp; Local;Action &amp; Adventure&#39;, &#39;Tools&#39;, &#39;Tools;Education&#39;,
+       &#39;Personalization&#39;, &#39;Productivity&#39;, &#39;Parenting&#39;,
+       &#39;Parenting;Music &amp; Video&#39;, &#39;Parenting;Education&#39;,
+       &#39;Parenting;Brain Games&#39;, &#39;Weather&#39;, &#39;Video Players &amp; Editors&#39;,
+       &#39;Video Players &amp; Editors;Music &amp; Video&#39;, &#39;News &amp; Magazines&#39;,
+       &#39;Maps &amp; Navigation&#39;, &#39;Health &amp; Fitness;Action &amp; Adventure&#39;,
+       &#39;Educational&#39;, &#39;Casino&#39;, &#39;Adventure;Brain Games&#39;,
+       &#39;Trivia;Education&#39;, &#39;Lifestyle;Education&#39;,
+       &#39;Books &amp; Reference;Creativity&#39;, &#39;Books &amp; Reference;Education&#39;,
+       &#39;Puzzle;Education&#39;, &#39;Role Playing;Education&#39;,
+       &#39;Role Playing;Brain Games&#39;, &#39;Strategy;Education&#39;,
+       &#39;Racing;Pretend Play&#39;, &#39;Communication;Creativity&#39;, &#39;11-Feb-18&#39;,
+       &#39;Strategy;Creativity&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [120]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39; &amp;&#39;</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="s1">&#39; ,&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [122]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39; ,&#39;</span><span class="p">:</span> <span class="s1">&#39;, &#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [123]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[123]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0                           Art, Design
+1             Art, Design, Pretend Play
+2                           Art, Design
+3                           Art, Design
+4               Art, Design, Creativity
+5                           Art, Design
+6                           Art, Design
+7                           Art, Design
+8                           Art, Design
+9               Art, Design, Creativity
+10                          Art, Design
+11                          Art, Design
+12                          Art, Design
+13                          Art, Design
+14                          Art, Design
+15                          Art, Design
+16                          Art, Design
+17                          Art, Design
+18                          Art, Design
+19                          Art, Design
+20                          Art, Design
+21                          Art, Design
+22                          Art, Design
+23       Art, Design, Action, Adventure
+24                          Art, Design
+25                          Art, Design
+26              Art, Design, Creativity
+27                          Art, Design
+28                          Art, Design
+29                          Art, Design
+                      ...
+10811                    Auto, Vehicles
+10812                         Education
+10813                          Business
+10814                     Entertainment
+10815                  Books, Reference
+10816                          Business
+10817                             Tools
+10818                           Finance
+10819                  Books, Reference
+10820                         Education
+10821                     Entertainment
+10822                      Productivity
+10823            Video Players, Editors
+10824                           Medical
+10825                            Social
+10826                            Social
+10827                         Education
+10828                            Comics
+10829                  Books, Reference
+10830                   News, Magazines
+10831                  Maps, Navigation
+10832                           Weather
+10833                  Books, Reference
+10834                         Education
+10835                          Business
+10836                         Education
+10837                         Education
+10838                           Medical
+10839                  Books, Reference
+10840                         Lifestyle
+Name: genres, Length: 10841, dtype: object
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [124]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">genres</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[124]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([&#39;Art, Design&#39;, &#39;Art, Design, Pretend Play&#39;,
+       &#39;Art, Design, Creativity&#39;, &#39;Art, Design, Action, Adventure&#39;,
+       &#39;Auto, Vehicles&#39;, &#39;Beauty&#39;, &#39;Books, Reference&#39;, &#39;Business&#39;,
+       &#39;Comics&#39;, &#39;Comics, Creativity&#39;, &#39;Communication&#39;, &#39;Dating&#39;,
+       &#39;Education, Education&#39;, &#39;Education&#39;, &#39;Education, Creativity&#39;,
+       &#39;Education, Music, Video&#39;, &#39;Education, Action, Adventure&#39;,
+       &#39;Education, Pretend Play&#39;, &#39;Education, Brain Games&#39;,
+       &#39;Entertainment&#39;, &#39;Entertainment, Music, Video&#39;,
+       &#39;Entertainment, Brain Games&#39;, &#39;Entertainment, Creativity&#39;,
+       &#39;Events&#39;, &#39;Finance&#39;, &#39;Food, Drink&#39;, &#39;Health, Fitness&#39;,
+       &#39;House, Home&#39;, &#39;Libraries, Demo&#39;, &#39;Lifestyle&#39;,
+       &#39;Lifestyle, Pretend Play&#39;, &#39;Adventure, Action, Adventure&#39;,
+       &#39;Arcade&#39;, &#39;Casual&#39;, &#39;Card&#39;, &#39;Casual, Pretend Play&#39;, &#39;Action&#39;,
+       &#39;Strategy&#39;, &#39;Puzzle&#39;, &#39;Sports&#39;, &#39;Music&#39;, &#39;Word&#39;, &#39;Racing&#39;,
+       &#39;Casual, Creativity&#39;, &#39;Casual, Action, Adventure&#39;, &#39;Simulation&#39;,
+       &#39;Adventure&#39;, &#39;Board&#39;, &#39;Trivia&#39;, &#39;Role Playing&#39;,
+       &#39;Simulation, Education&#39;, &#39;Action, Action, Adventure&#39;,
+       &#39;Casual, Brain Games&#39;, &#39;Simulation, Action, Adventure&#39;,
+       &#39;Educational, Creativity&#39;, &#39;Puzzle, Brain Games&#39;,
+       &#39;Educational, Education&#39;, &#39;Card, Brain Games&#39;,
+       &#39;Educational, Brain Games&#39;, &#39;Educational, Pretend Play&#39;,
+       &#39;Entertainment, Education&#39;, &#39;Casual, Education&#39;,
+       &#39;Music, Music, Video&#39;, &#39;Racing, Action, Adventure&#39;,
+       &#39;Arcade, Pretend Play&#39;, &#39;Role Playing, Action, Adventure&#39;,
+       &#39;Simulation, Pretend Play&#39;, &#39;Puzzle, Creativity&#39;,
+       &#39;Sports, Action, Adventure&#39;, &#39;Educational, Action, Adventure&#39;,
+       &#39;Arcade, Action, Adventure&#39;, &#39;Entertainment, Action, Adventure&#39;,
+       &#39;Puzzle, Action, Adventure&#39;, &#39;Strategy, Action, Adventure&#39;,
+       &#39;Music, Audio, Music, Video&#39;, &#39;Health, Fitness, Education&#39;,
+       &#39;Adventure, Education&#39;, &#39;Board, Brain Games&#39;,
+       &#39;Board, Action, Adventure&#39;, &#39;Board, Pretend Play&#39;,
+       &#39;Casual, Music, Video&#39;, &#39;Role Playing, Pretend Play&#39;,
+       &#39;Entertainment, Pretend Play&#39;,
+       &#39;Video Players, Editors, Creativity&#39;, &#39;Card, Action, Adventure&#39;,
+       &#39;Medical&#39;, &#39;Social&#39;, &#39;Shopping&#39;, &#39;Photography&#39;, &#39;Travel, Local&#39;,
+       &#39;Travel, Local, Action, Adventure&#39;, &#39;Tools&#39;, &#39;Tools, Education&#39;,
+       &#39;Personalization&#39;, &#39;Productivity&#39;, &#39;Parenting&#39;,
+       &#39;Parenting, Music, Video&#39;, &#39;Parenting, Education&#39;,
+       &#39;Parenting, Brain Games&#39;, &#39;Weather&#39;, &#39;Video Players, Editors&#39;,
+       &#39;Video Players, Editors, Music, Video&#39;, &#39;News, Magazines&#39;,
+       &#39;Maps, Navigation&#39;, &#39;Health, Fitness, Action, Adventure&#39;,
+       &#39;Educational&#39;, &#39;Casino&#39;, &#39;Adventure, Brain Games&#39;,
+       &#39;Trivia, Education&#39;, &#39;Lifestyle, Education&#39;,
+       &#39;Books, Reference, Creativity&#39;, &#39;Books, Reference, Education&#39;,
+       &#39;Puzzle, Education&#39;, &#39;Role Playing, Education&#39;,
+       &#39;Role Playing, Brain Games&#39;, &#39;Strategy, Education&#39;,
+       &#39;Racing, Pretend Play&#39;, &#39;Communication, Creativity&#39;, &#39;11-Feb-18&#39;,
+       &#39;Strategy, Creativity&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [125]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;11-Feb-18&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [126]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">genres</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[126]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([&#39;Art, Design&#39;, &#39;Art, Design, Pretend Play&#39;,
+       &#39;Art, Design, Creativity&#39;, &#39;Art, Design, Action, Adventure&#39;,
+       &#39;Auto, Vehicles&#39;, &#39;Beauty&#39;, &#39;Books, Reference&#39;, &#39;Business&#39;,
+       &#39;Comics&#39;, &#39;Comics, Creativity&#39;, &#39;Communication&#39;, &#39;Dating&#39;,
+       &#39;Education, Education&#39;, &#39;Education&#39;, &#39;Education, Creativity&#39;,
+       &#39;Education, Music, Video&#39;, &#39;Education, Action, Adventure&#39;,
+       &#39;Education, Pretend Play&#39;, &#39;Education, Brain Games&#39;,
+       &#39;Entertainment&#39;, &#39;Entertainment, Music, Video&#39;,
+       &#39;Entertainment, Brain Games&#39;, &#39;Entertainment, Creativity&#39;,
+       &#39;Events&#39;, &#39;Finance&#39;, &#39;Food, Drink&#39;, &#39;Health, Fitness&#39;,
+       &#39;House, Home&#39;, &#39;Libraries, Demo&#39;, &#39;Lifestyle&#39;,
+       &#39;Lifestyle, Pretend Play&#39;, &#39;Adventure, Action, Adventure&#39;,
+       &#39;Arcade&#39;, &#39;Casual&#39;, &#39;Card&#39;, &#39;Casual, Pretend Play&#39;, &#39;Action&#39;,
+       &#39;Strategy&#39;, &#39;Puzzle&#39;, &#39;Sports&#39;, &#39;Music&#39;, &#39;Word&#39;, &#39;Racing&#39;,
+       &#39;Casual, Creativity&#39;, &#39;Casual, Action, Adventure&#39;, &#39;Simulation&#39;,
+       &#39;Adventure&#39;, &#39;Board&#39;, &#39;Trivia&#39;, &#39;Role Playing&#39;,
+       &#39;Simulation, Education&#39;, &#39;Action, Action, Adventure&#39;,
+       &#39;Casual, Brain Games&#39;, &#39;Simulation, Action, Adventure&#39;,
+       &#39;Educational, Creativity&#39;, &#39;Puzzle, Brain Games&#39;,
+       &#39;Educational, Education&#39;, &#39;Card, Brain Games&#39;,
+       &#39;Educational, Brain Games&#39;, &#39;Educational, Pretend Play&#39;,
+       &#39;Entertainment, Education&#39;, &#39;Casual, Education&#39;,
+       &#39;Music, Music, Video&#39;, &#39;Racing, Action, Adventure&#39;,
+       &#39;Arcade, Pretend Play&#39;, &#39;Role Playing, Action, Adventure&#39;,
+       &#39;Simulation, Pretend Play&#39;, &#39;Puzzle, Creativity&#39;,
+       &#39;Sports, Action, Adventure&#39;, &#39;Educational, Action, Adventure&#39;,
+       &#39;Arcade, Action, Adventure&#39;, &#39;Entertainment, Action, Adventure&#39;,
+       &#39;Puzzle, Action, Adventure&#39;, &#39;Strategy, Action, Adventure&#39;,
+       &#39;Music, Audio, Music, Video&#39;, &#39;Health, Fitness, Education&#39;,
+       &#39;Adventure, Education&#39;, &#39;Board, Brain Games&#39;,
+       &#39;Board, Action, Adventure&#39;, &#39;Board, Pretend Play&#39;,
+       &#39;Casual, Music, Video&#39;, &#39;Role Playing, Pretend Play&#39;,
+       &#39;Entertainment, Pretend Play&#39;,
+       &#39;Video Players, Editors, Creativity&#39;, &#39;Card, Action, Adventure&#39;,
+       &#39;Medical&#39;, &#39;Social&#39;, &#39;Shopping&#39;, &#39;Photography&#39;, &#39;Travel, Local&#39;,
+       &#39;Travel, Local, Action, Adventure&#39;, &#39;Tools&#39;, &#39;Tools, Education&#39;,
+       &#39;Personalization&#39;, &#39;Productivity&#39;, &#39;Parenting&#39;,
+       &#39;Parenting, Music, Video&#39;, &#39;Parenting, Education&#39;,
+       &#39;Parenting, Brain Games&#39;, &#39;Weather&#39;, &#39;Video Players, Editors&#39;,
+       &#39;Video Players, Editors, Music, Video&#39;, &#39;News, Magazines&#39;,
+       &#39;Maps, Navigation&#39;, &#39;Health, Fitness, Action, Adventure&#39;,
+       &#39;Educational&#39;, &#39;Casino&#39;, &#39;Adventure, Brain Games&#39;,
+       &#39;Trivia, Education&#39;, &#39;Lifestyle, Education&#39;,
+       &#39;Books, Reference, Creativity&#39;, &#39;Books, Reference, Education&#39;,
+       &#39;Puzzle, Education&#39;, &#39;Role Playing, Education&#39;,
+       &#39;Role Playing, Brain Games&#39;, &#39;Strategy, Education&#39;,
+       &#39;Racing, Pretend Play&#39;, &#39;Communication, Creativity&#39;, &#39;&#39;,
+       &#39;Strategy, Creativity&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [131]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [139]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">1000000</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [141]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [142]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;googleData.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [143]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[143]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>app</th>
+      <th>rating</th>
+      <th>reviews</th>
+      <th>size</th>
+      <th>price</th>
+      <th>cont_rating</th>
+      <th>genres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Photo Editor &amp; Candy Camera &amp; Grid &amp; ScrapBook</td>
+      <td>4.1</td>
+      <td>159</td>
+      <td>19000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Coloring book moana</td>
+      <td>3.9</td>
+      <td>967</td>
+      <td>14000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>U Launcher Lite äóñ FREE Live Cool Themes, Hid...</td>
+      <td>4.7</td>
+      <td>87510</td>
+      <td>8700000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sketch - Draw &amp; Paint</td>
+      <td>4.5</td>
+      <td>215644</td>
+      <td>25000000.0</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pixel Draw - Number Art Coloring Book</td>
+      <td>4.3</td>
+      <td>967</td>
+      <td>2800000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Paper flowers instructions</td>
+      <td>4.4</td>
+      <td>167</td>
+      <td>5600000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Smoke Effect Photo Maker - Smoke Editor</td>
+      <td>3.8</td>
+      <td>178</td>
+      <td>19000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Infinite Painter</td>
+      <td>4.1</td>
+      <td>36815</td>
+      <td>29000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Garden Coloring Book</td>
+      <td>4.4</td>
+      <td>13791</td>
+      <td>33000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Kids Paint Free - Drawing Fun</td>
+      <td>4.7</td>
+      <td>121</td>
+      <td>3100000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Text on Photo - Fonteee</td>
+      <td>4.4</td>
+      <td>13880</td>
+      <td>28000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Name Art Photo Editor - Focus n Filters</td>
+      <td>4.4</td>
+      <td>8788</td>
+      <td>12000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Tattoo Name On My Photo Editor</td>
+      <td>4.2</td>
+      <td>44829</td>
+      <td>20000000.0</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Mandala Coloring Book</td>
+      <td>4.6</td>
+      <td>4326</td>
+      <td>21000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3D Color Pixel by Number - Sandbox Art Coloring</td>
+      <td>4.4</td>
+      <td>1518</td>
+      <td>37000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Learn To Draw Kawaii Characters</td>
+      <td>3.2</td>
+      <td>55</td>
+      <td>2700000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Photo Designer - Write your name with shapes</td>
+      <td>4.7</td>
+      <td>3632</td>
+      <td>5500000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>350 Diy Room Decor Ideas</td>
+      <td>4.5</td>
+      <td>27</td>
+      <td>17000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>FlipaClip - Cartoon animation</td>
+      <td>4.3</td>
+      <td>194216</td>
+      <td>39000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ibis Paint X</td>
+      <td>4.6</td>
+      <td>224399</td>
+      <td>31000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Logo Maker - Small Business</td>
+      <td>4.0</td>
+      <td>450</td>
+      <td>14000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Boys Photo Editor - Six Pack &amp; Men's Suit</td>
+      <td>4.1</td>
+      <td>654</td>
+      <td>12000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Superheroes Wallpapers | 4K Backgrounds</td>
+      <td>4.7</td>
+      <td>7699</td>
+      <td>4200000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Mcqueen Coloring pages</td>
+      <td>0.0</td>
+      <td>61</td>
+      <td>7000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>HD Mickey Minnie Wallpapers</td>
+      <td>4.7</td>
+      <td>118</td>
+      <td>23000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Harley Quinn wallpapers HD</td>
+      <td>4.8</td>
+      <td>192</td>
+      <td>6000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Colorfit - Drawing &amp; Coloring</td>
+      <td>4.7</td>
+      <td>20260</td>
+      <td>25000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Animated Photo Editor</td>
+      <td>4.1</td>
+      <td>203</td>
+      <td>6100000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Pencil Sketch Drawing</td>
+      <td>3.9</td>
+      <td>136</td>
+      <td>4600000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Easy Realistic Drawing Tutorial</td>
+      <td>4.1</td>
+      <td>223</td>
+      <td>4200000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Art</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>10811</th>
+      <td>FR Plus 1.6</td>
+      <td>0.0</td>
+      <td>4</td>
+      <td>3900000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Auto</td>
+    </tr>
+    <tr>
+      <th>10812</th>
+      <td>Fr Agnel Pune</td>
+      <td>4.1</td>
+      <td>80</td>
+      <td>13000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Education</td>
+    </tr>
+    <tr>
+      <th>10813</th>
+      <td>DICT.fr Mobile</td>
+      <td>0.0</td>
+      <td>20</td>
+      <td>2700000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Business</td>
+    </tr>
+    <tr>
+      <th>10814</th>
+      <td>FR: My Secret Pets!</td>
+      <td>4.0</td>
+      <td>785</td>
+      <td>31000000.0</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Entertainment</td>
+    </tr>
+    <tr>
+      <th>10815</th>
+      <td>Golden Dictionary (FR-AR)</td>
+      <td>4.2</td>
+      <td>5775</td>
+      <td>4900000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Books</td>
+    </tr>
+    <tr>
+      <th>10816</th>
+      <td>FieldBi FR Offline</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>6800000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Business</td>
+    </tr>
+    <tr>
+      <th>10817</th>
+      <td>HTC Sense Input - FR</td>
+      <td>4.0</td>
+      <td>885</td>
+      <td>8000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Tools</td>
+    </tr>
+    <tr>
+      <th>10818</th>
+      <td>Gold Quote - Gold.fr</td>
+      <td>0.0</td>
+      <td>96</td>
+      <td>1500000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <th>10819</th>
+      <td>Fanfic-FR</td>
+      <td>3.3</td>
+      <td>52</td>
+      <td>3600000.0</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Books</td>
+    </tr>
+    <tr>
+      <th>10820</th>
+      <td>Fr. Daoud Lamei</td>
+      <td>5.0</td>
+      <td>22</td>
+      <td>8600000.0</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Education</td>
+    </tr>
+    <tr>
+      <th>10821</th>
+      <td>Poop FR</td>
+      <td>0.0</td>
+      <td>6</td>
+      <td>2500000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Entertainment</td>
+    </tr>
+    <tr>
+      <th>10822</th>
+      <td>PLMGSS FR</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>3100000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Productivity</td>
+    </tr>
+    <tr>
+      <th>10823</th>
+      <td>List iptv FR</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2900000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Video Players</td>
+    </tr>
+    <tr>
+      <th>10824</th>
+      <td>Cardio-FR</td>
+      <td>0.0</td>
+      <td>67</td>
+      <td>82000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Medical</td>
+    </tr>
+    <tr>
+      <th>10825</th>
+      <td>Naruto &amp; Boruto FR</td>
+      <td>0.0</td>
+      <td>7</td>
+      <td>7700000.0</td>
+      <td>0</td>
+      <td>12.0</td>
+      <td>Social</td>
+    </tr>
+    <tr>
+      <th>10826</th>
+      <td>Frim: get new friends on local chat rooms</td>
+      <td>4.0</td>
+      <td>88486</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>17.0</td>
+      <td>Social</td>
+    </tr>
+    <tr>
+      <th>10827</th>
+      <td>Fr Agnel Ambarnath</td>
+      <td>4.2</td>
+      <td>117</td>
+      <td>13000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Education</td>
+    </tr>
+    <tr>
+      <th>10828</th>
+      <td>Manga-FR - Anime Vostfr</td>
+      <td>3.4</td>
+      <td>291</td>
+      <td>13000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Comics</td>
+    </tr>
+    <tr>
+      <th>10829</th>
+      <td>Bulgarian French Dictionary Fr</td>
+      <td>4.6</td>
+      <td>603</td>
+      <td>7400000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Books</td>
+    </tr>
+    <tr>
+      <th>10830</th>
+      <td>News Minecraft.fr</td>
+      <td>3.8</td>
+      <td>881</td>
+      <td>2300000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>News</td>
+    </tr>
+    <tr>
+      <th>10831</th>
+      <td>payermonstationnement.fr</td>
+      <td>0.0</td>
+      <td>38</td>
+      <td>9800000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Maps</td>
+    </tr>
+    <tr>
+      <th>10832</th>
+      <td>FR Tides</td>
+      <td>3.8</td>
+      <td>1195</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Weather</td>
+    </tr>
+    <tr>
+      <th>10833</th>
+      <td>Chemin (fr)</td>
+      <td>4.8</td>
+      <td>44</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Books</td>
+    </tr>
+    <tr>
+      <th>10834</th>
+      <td>FR Calculator</td>
+      <td>4.0</td>
+      <td>7</td>
+      <td>2600000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Education</td>
+    </tr>
+    <tr>
+      <th>10835</th>
+      <td>FR Forms</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>9600000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Business</td>
+    </tr>
+    <tr>
+      <th>10836</th>
+      <td>Sya9a Maroc - FR</td>
+      <td>4.5</td>
+      <td>38</td>
+      <td>53000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Education</td>
+    </tr>
+    <tr>
+      <th>10837</th>
+      <td>Fr. Mike Schmitz Audio Teachings</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>3600000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Education</td>
+    </tr>
+    <tr>
+      <th>10838</th>
+      <td>Parkinson Exercices FR</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>9500000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Medical</td>
+    </tr>
+    <tr>
+      <th>10839</th>
+      <td>The SCP Foundation DB fr nn5n</td>
+      <td>4.5</td>
+      <td>114</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>17.0</td>
+      <td>Books</td>
+    </tr>
+    <tr>
+      <th>10840</th>
+      <td>iHoroscope - 2018 Daily Horoscope &amp; Astrology</td>
+      <td>4.5</td>
+      <td>398307</td>
+      <td>19000000.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>Lifestyle</td>
+    </tr>
+  </tbody>
+</table>
+<p>10841 rows × 7 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [228]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Convert data into numeric</span>
+<span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Bar-Chart-for-Count-of-each-amount-of-Price">
+<h1>Bar Chart for Count of each amount of Price<a class="headerlink" href="#Bar-Chart-for-Count-of-each-amount-of-Price" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [230]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">criteria1</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">paidapps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">criteria1</span><span class="p">]</span>
+<span class="n">paidapps</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[230]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Int64Index([  234,   235,   290,   291,   427,   476,   477,   478,   479,
+              480,
+            ...
+            10675, 10679, 10682, 10690, 10697, 10735, 10760, 10782, 10785,
+            10798],
+           dtype=&#39;int64&#39;, length=800)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [232]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">paidappcount</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">paidappcount</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[232]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>0.00    10041
+0.99      148
+2.99      129
+1.99       73
+4.99       72
+Name: price, dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [233]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">multiapp</span> <span class="o">=</span> <span class="n">paidappcount</span><span class="p">[</span><span class="n">paidappcount</span><span class="o">.</span><span class="n">values</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">multiapp</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[233]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Float64Index([0.0, 0.99, 2.99, 1.99, 4.99, 3.99, 1.49, 5.99, 2.49, 9.99, 6.99,
+              399.99, 14.99],
+             dtype=&#39;float64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Create-function-to-add-data-to-plot">
+<h1>Create function to add data to plot<a class="headerlink" href="#Create-function-to-add-data-to-plot" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [227]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+
+<span></span><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">+</span><span class="n">h</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Compare-apps-with-more-review---popular-or-well-received-apps-vs-less-popular-apps">
+<h1>Compare apps with more review - popular or well-received apps vs less popular apps<a class="headerlink" href="#Compare-apps-with-more-review---popular-or-well-received-apps-vs-less-popular-apps" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [203]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;3.0M&#39;</span><span class="p">,</span> <span class="s1">&#39;3000000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [204]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [205]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[205]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>count    1.084100e+04
+mean     4.443887e+05
+std      2.927728e+06
+min      0.000000e+00
+25%      3.800000e+01
+50%      2.094000e+03
+75%      5.479800e+04
+max      7.815831e+07
+Name: reviews, dtype: float64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [207]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">popular_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">250000</span><span class="p">]</span>
+<span class="n">less_popular_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">250000</span><span class="p">]</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Popular Apps&#39;</span><span class="p">,</span><span class="s1">&#39;Less Poplular Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">popular_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">less_popular_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie Chart of App Size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_44_0.png" src="../../_images/sphinx_notebooks_Google_Data_44_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Compare-size-of-Apps">
+<h1>Compare size of Apps<a class="headerlink" href="#Compare-size-of-Apps" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [196]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">avg</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [206]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">large_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">20000000</span><span class="p">]</span>
+<span class="n">small_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">20000000</span><span class="p">]</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Large Apps&#39;</span><span class="p">,</span><span class="s1">&#39;Small Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">large_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">small_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie Chart of App Size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_48_0.png" src="../../_images/sphinx_notebooks_Google_Data_48_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Compare-free-vs-paid-Apps">
+<h1>Compare free vs paid Apps<a class="headerlink" href="#Compare-free-vs-paid-Apps" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [165]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [209]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">free_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">paid_apps</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">,</span><span class="s1">&#39;Paid Apps&#39;</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">free_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">paid_apps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pie Chart of App Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_51_0.png" src="../../_images/sphinx_notebooks_Google_Data_51_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Compare-user-rating-between-free-and-paid-apps">
+<h1>Compare user rating between free and paid apps<a class="headerlink" href="#Compare-user-rating-between-free-and-paid-apps" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [184]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">free_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Free Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Free Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">paid_apps</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Paid Apps Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;User Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Paid Apps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_53_0.png" src="../../_images/sphinx_notebooks_Google_Data_53_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="App-Distribution-by-Genres">
+<h1>App Distribution by Genres<a class="headerlink" href="#App-Distribution-by-Genres" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [163]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">googleStore</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GENRES&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;APPS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_55_0.png" src="../../_images/sphinx_notebooks_Google_Data_55_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Top-20-most-expensive-apps-on-Google-Store-by-Genre">
+<h1>Top 20 most expensive apps on Google Store by Genre<a class="headerlink" href="#Top-20-most-expensive-apps-on-Google-Store-by-Genre" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [174]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">genre_expens_app</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;genres&#39;</span><span class="p">])[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">expens_app</span> <span class="o">=</span> <span class="n">genre_expens_app</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">googleStore</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">],</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">expens_app</span><span class="p">[[</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="s1">&#39;app&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[174]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>genres</th>
+      <th>app</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>236</th>
+      <td>Lifestyle</td>
+      <td>I'm Rich - Trump Edition</td>
+      <td>400.00</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>Entertainment</td>
+      <td>most expensive app (H)</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>Finance</td>
+      <td>I AM RICH PRO PLUS</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Entertainment</td>
+      <td>I am Rich Plus</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>Entertainment</td>
+      <td>I Am Rich Pro</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Finance</td>
+      <td>I Am Rich Premium</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>Finance</td>
+      <td>I am Rich!</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>Finance</td>
+      <td>I am rich(premium)</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Finance</td>
+      <td>I am rich (Most expensive app)</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>Finance</td>
+      <td>I am Rich</td>
+      <td>399.99</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>Medical</td>
+      <td>EP Cook Book</td>
+      <td>200.00</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>Productivity</td>
+      <td>cronometra-br</td>
+      <td>154.99</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>Events</td>
+      <td>BP Fitness Lead Scanner</td>
+      <td>109.99</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>Business</td>
+      <td>Lean EQ</td>
+      <td>89.99</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>Education</td>
+      <td>Norwegian For Kids &amp; Babies F</td>
+      <td>39.99</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>Photography</td>
+      <td>Guide to Nikon Df</td>
+      <td>29.99</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>Sports</td>
+      <td>Golfshot Plus: Golf GPS</td>
+      <td>29.99</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>Tools</td>
+      <td>G-NetReport Pro</td>
+      <td>25.99</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>Role Playing</td>
+      <td>DRAGON QUEST VIII</td>
+      <td>19.99</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Communication</td>
+      <td>Z PIVOT</td>
+      <td>19.99</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Content-Rating">
+<h1>Content Rating<a class="headerlink" href="#Content-Rating" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [186]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">googleStore</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Content Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Apps&#39;</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_59_0.png" src="../../_images/sphinx_notebooks_Google_Data_59_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Content-rating-by-Genre">
+<h1>Content rating by Genre<a class="headerlink" href="#Content-rating-by-Genre" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [194]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="s1">&#39;genres&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;cont_rating&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">],</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">googleStore</span><span class="p">[</span><span class="s1">&#39;genres&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Genres&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Apps&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span> <span class="o">+</span> <span class="s1">&#39; Apps&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_61_0.png" src="../../_images/sphinx_notebooks_Google_Data_61_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_61_1.png" src="../../_images/sphinx_notebooks_Google_Data_61_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_61_2.png" src="../../_images/sphinx_notebooks_Google_Data_61_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_61_3.png" src="../../_images/sphinx_notebooks_Google_Data_61_3.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">googleStore</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;googleData.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">storeprod</span> <span class="o">=</span> <span class="n">googleStore</span><span class="p">[[</span><span class="s2">&quot;genres&quot;</span><span class="p">,</span><span class="s2">&quot;price&quot;</span><span class="p">]]</span>
+<span class="n">TotalPriceByGenre</span> <span class="o">=</span> <span class="n">storeprod</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;genres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">TotalPriceByGenre</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x112f0e550&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/sphinx_notebooks_Google_Data_63_1.png" src="../../_images/sphinx_notebooks_Google_Data_63_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">TotalPriceByGenre</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>price</th>
+    </tr>
+    <tr>
+      <th>genres</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Finance</th>
+      <td>2900.83</td>
+    </tr>
+    <tr>
+      <th>Lifestyle</th>
+      <td>2360.87</td>
+    </tr>
+    <tr>
+      <th>Entertainment</th>
+      <td>1665.08</td>
+    </tr>
+    <tr>
+      <th>Medical</th>
+      <td>1439.96</td>
+    </tr>
+    <tr>
+      <th>Education</th>
+      <td>288.22</td>
+    </tr>
+    <tr>
+      <th>Tools</th>
+      <td>267.25</td>
+    </tr>
+    <tr>
+      <th>Productivity</th>
+      <td>250.93</td>
+    </tr>
+    <tr>
+      <th>Role Playing</th>
+      <td>187.04</td>
+    </tr>
+    <tr>
+      <th>Business</th>
+      <td>185.27</td>
+    </tr>
+    <tr>
+      <th>Personalization</th>
+      <td>153.96</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Data Visualization Website  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Thu &amp; Zach.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>
