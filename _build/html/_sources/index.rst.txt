@@ -34,7 +34,7 @@ Importing packages
 ++++++++++++++++++++
 We start by importing packages. Since we are working with CSV data, we will need *pandas* to read our data. Other packages will be helpful for visualization.
 
-.. code-block:: python
+.. highlight:: python
 
     import pandas as pd
     import numpy as np
