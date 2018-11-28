@@ -120,11 +120,11 @@ import matplotlib.pyplot as plt</div></blockquote>
 <div class="section" id="renaming-and-dropping">
 <h3>Renaming and Dropping<a class="headerlink" href="#renaming-and-dropping" title="Permalink to this headline">¶</a></h3>
 <p>As we talked earlier, in order to work with two separate dataset, we need to standardize each of the. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
-Note that I dropped some columns and renamed others in the following code
-.. code-block:: python</p>
-<blockquote>
-<div>googleStore.rename(columns={‘App’: ‘app’, ‘Rating’: ‘rating’, ‘Reviews’: ‘reviews’, ‘Size’: ‘size’, ‘Price’: ‘price’, ‘Genres’: ‘genres’}, inplace=True)
-googleStore = googleStore.drop(columns=[‘Category’, ‘Installs’, ‘Type’, ‘Last Updated’, ‘Current Ver’, ‘Android Ver’])</div></blockquote>
+Note that I dropped some columns and renamed others in the following code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;App&#39;</span><span class="p">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">:</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Reviews&#39;</span><span class="p">:</span> <span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;Size&#39;</span><span class="p">:</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;Genres&#39;</span><span class="p">:</span> <span class="s1">&#39;genres&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Installs&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Last Updated&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Ver&#39;</span><span class="p">,</span> <span class="s1">&#39;Android Ver&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="bar-chart-for-count-of-price-of-apps-for-genres">

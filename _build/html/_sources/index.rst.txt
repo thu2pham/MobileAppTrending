@@ -44,6 +44,7 @@ Renaming and Dropping
 +++++++++++++++++++++++
 As we talked earlier, in order to work with two separate dataset, we need to standardize each of the. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
 Note that I dropped some columns and renamed others in the following code
+
 .. code-block:: python
 
     googleStore.rename(columns={'App': 'app', 'Rating': 'rating', 'Reviews': 'reviews', 'Size': 'size', 'Price': 'price', 'Genres': 'genres'}, inplace=True)
