@@ -51,6 +51,8 @@ Note that I dropped some columns and renamed others in the following code.
     googleStore.rename(columns={'App': 'app', 'Rating': 'rating', 'Reviews': 'reviews', 'Size': 'size', 'Price': 'price', 'Genres': 'genres'}, inplace=True)
     googleStore = googleStore.drop(columns=['Category', 'Installs', 'Type', 'Last Updated', 'Current Ver', 'Android Ver'])
 
+hahaha
+
 Bar Chart for count of price of apps for genres
 -------------------------------------------------
 
