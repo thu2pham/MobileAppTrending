@@ -52,7 +52,7 @@ We collect more than 7,100 data points from Apple App Store and approximately 10
 
 Importing packages
 ++++++++++++++++++++
-We start by importing packages. Since we are working with CSV data, we will need *pandas* to read our data. Other packages will be helpful for visualization.
+We start by importing packages as one should do. Since we are working with CSV data, we will need *pandas* to read our data. Other packages will be helpful for visualization.
 
 .. code-block:: python
 
@@ -154,6 +154,8 @@ Free Apps vs. Paid Apps
 Free vs Paid apps counts
 +++++++++++++++++++++++++++++++++++++++
 
+Another common visualization method that we didn’t go over is Pie Charts, we thought they would be an excellent way to show off the data from the two separate datasets. There is a large difference between the “Pay-To-Play” scene on the two separate app stores. As we can see the Apple Store has 43.6% of their apps with a price tag on them while the Google Store only has about 7.4% of their apps with a price tag on them. 
+
 .. figure:: notebooks/AppleStore/PieChartFreeVSPaid.png
     :alt: Apple App Store
     :width: 60%
@@ -170,6 +172,8 @@ Free vs Paid apps counts
 
 Rating of Free vs Paid apps
 +++++++++++++++++++++++++++++
+
+Next, we decided to look into the rating distribution of free apps versus paid apps to see if there is a difference in satisfaction between whether people preferred free versus paid apps. Something that we see a lot of is the amount of apps with 0.0 rating(929 for apple, 1474 for google), we can assume that this just means they don’t have any ratings. The next thing that we noticed is that there is quite an odd outlier, for the Google App Store we encountered an app with a rating of 19.0 in the free apps, we truly aren’t sure what made this app so good that it broke the 0.0-5.0 system but it’s there, named “Life Made WI-Fi Touchscreen Photo Frame”.
 
 .. figure:: notebooks/AppleStore/UserRatingFreeVSPaid.png
     :alt: Apple App Store
@@ -188,6 +192,9 @@ Rating of Free vs Paid apps
 Content Rating Distribution
 ---------------------------------------
 
+We then chose to look at the totals of all the different content ratings of all the apps on the App Stores to see if one store was more “Family Friendly” compared to the next. Apple Store had roughly 800 Rated R apps while the Google Store had a whopping 3… Needless to say, the Google Store had a astounding 9131 “E for Everyone” Apps while Apple had roughly 4300...
+
+
 .. figure:: notebooks/AppleStore/ContentRatingCount.png
     :alt: Apple App Store
     :width: 80%
@@ -205,6 +212,8 @@ Content Rating Distribution
 Size Comparison
 -------------------------------
 
+Back to Pie Charts! Assuming that the size of the apps in bytes would be roughly the same since they had some overlapping apps as well as apps can’t be too large or else people would be a bit weary about giving up a bunch of storage on their devices. What we stumbled upon was once again surprising, we used the .describe to find the mean of Google Play’s “size” and then we changed roughly away from the mean in order to get 20MB as our threshold. The Apple Store had 90.2% of apps above the average of Google Play’s size, we assumed that this would be understandable as the Apple Store has more paid apps and therefore the apps must have more work put into them, making them larger.  
+
 .. figure:: notebooks/AppleStore/PieChartLargeVSSmall.png
     :alt: Apple App Store
     :width: 60%
@@ -221,6 +230,8 @@ Size Comparison
 
 Amount of reviews
 -----------------------
+
+The last thing we chose to analyze was the amount of reviews that certain apps received. Google was very heavy on their review count as they had roughly 13.7% of their apps with OVER 250,000 reviews! The Apple store had a significantly less amount of apps with over 250,000 reviews, only being about 1.1% meeting this threshold, mostly apps with large followings such as Candy Crush, Facebook, Instagram, etc. 
 
 .. figure:: notebooks/AppleStore/PieChartAppReviews.png
     :alt: Apple App Store
@@ -260,7 +271,8 @@ Google Play Store
 
 Conclusion
 ------------
-With all the commotion around Phones and more specifically, Apps, there is little to dispute when we bring up the fact that it is an ever growing business with a nearly limitless audience as well as potential to become bigger every second. This analysis is just the tip of the iceberg when it comes to the online entertainment industry, since the internet is a ever-growing industry, there needs be constant analysis of the trends that prove to make certain platforms successful and we hope to have intrigued your thought process of the App Industry. 
+
+With all the commotion around Phones and more specifically, Apps, there is little to dispute when we bring up the fact that it is an ever growing business with a nearly limitless audience as well as potential to become bigger every second. It is also very important to point out that there is a large difference when it comes to getting your app into these two separate stores; it is a fairly easy process to get your app into the Google Store while it is quite difficult to get past Apple’s standards for apps on their store. This can skew the data as we have a very diluted store as opposed to a store that has a set of standards to even attempt to get in. This analysis is just the tip of the iceberg when it comes to the online entertainment industry since the internet is an ever-growing industry, there needs be constant analysis of the trends that prove to make certain platforms successful and we hope to have intrigued your thought process of the App Industry. 
 
 Indices and tables
 ==================
