@@ -88,7 +88,7 @@ The price distribution of apps by genres
     Apple App Store
 
 
-.. figure:: notebooks/Google Data/notebooks.png
+.. figure:: notebooks/Google\ Data/notebooks.png
     :alt: Google Play App Store
     :width: 90%
     :align: center
