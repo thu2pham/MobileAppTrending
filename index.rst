@@ -78,19 +78,12 @@ App Distribution by Genres
 The price distribution of apps by genres
 -------------------------------------------------
 
-.. subfigstart::
-
-.. _price-genre-base:
-
 .. figure:: notebooks/AppleStore/GenrePrice.png
     :alt: Apple App Store
     :width: 90%
     :align: center
     
     Apple App Store
-
-
-.. _price-genre-original:
 
 .. figure:: notebooks/GoogleStore/GenrePrice.png
     :alt: Google Play App Store
@@ -99,12 +92,6 @@ The price distribution of apps by genres
     
     Google Play App Store
 
-.. subfigend::
-    :width: 0.30
-    :alt: Price Distribution
-    :label: price-genre
-
-    The blah bkah
 
 Total price of paid apps in each genre
 ----------------------------------------
