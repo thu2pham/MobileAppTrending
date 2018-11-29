@@ -78,6 +78,8 @@ App Distribution by Genres
 Price distribution of apps by genres
 ++++++++++++++++++++++++++++++++++++++++++
 
+Here we can see a significant difference between two marketplaces. The apps from Apple App Store that fall into Games category make the most money while it is Finance for Google Play.
+
 .. figure:: notebooks/AppleStore/GenrePrice.png
     :alt: Apple App Store
     :width: 80%
@@ -92,8 +94,6 @@ Price distribution of apps by genres
     
     Google Play App Store
 
-
-Here we can see a significant difference between two marketplaces. The apps from Apple App Store that fall into Games category make the most money while it is Finance for Google Play.
 
 Content rating distribution by genres
 +++++++++++++++++++++++++++++++++++++++
