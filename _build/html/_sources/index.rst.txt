@@ -24,6 +24,7 @@ We started by going to Kaggle and retreiving two datasets.
 These two datasets give us a big picture about mobile apps since Google Store and App Store are now two biggest sources in the market. Taken as a whole, the data shows some interesting correlations more than just a vast list of apps and prices. These two are extremely valuable to compare as a big picture. However, one disadvantage of these dataset is that we could not merge them together since the app ID is not identical. Hence, when working with the data, we have to go back and forth between two datasets.
 
 Knowing the disadvantage of our data, each of us work with one dataset but we have some rules to make sure our workflow are consistent and on the same page:
+
 #. Formulate the clean dataset. Looking at the data we got, think of how it is going to look like after cleaning, which variable will be useful, which variable we could not utilize will be eliminated.
 #. Identify the area we do not want in our dataset.
 #. Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word.
