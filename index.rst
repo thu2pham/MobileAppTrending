@@ -89,6 +89,7 @@ The price distribution of apps by genres
     
     Apple App Store
 
+
 .. _price-genre-original:
 
 .. figure:: notebooks/GoogleStore/GenrePrice.png
