@@ -75,8 +75,8 @@ For more details, let's take a look at `this notebook <notebooks/Google\ Data.ip
 App Distribution by Genres
 ----------------------------
 
-The price distribution of apps by genres
--------------------------------------------------
+Price distribution of apps by genres
+++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: notebooks/AppleStore/GenrePrice.png
     :alt: Apple App Store
@@ -93,6 +93,58 @@ The price distribution of apps by genres
     Google Play App Store
 
 
+Here we can see a significant difference between two marketplaces. Most of the apps from Apple App Store fall into Games category while it is Finance for Google Play.
+
+Content rating distribution by genres
++++++++++++++++++++++++++++++++++++++++
+
+.. figure:: notebooks/AppleStore/GenreTypeE.png
+    :alt: Apple App Store
+    :width: 90%
+    :align: center
+    
+    Apple App Store
+
+.. figure:: notebooks/GoogleStore/GenreTypeE.png
+    :alt: Google Play App Store
+    :width: 90%
+    :align: center
+    
+    Google Play App Store
+
+.. figure:: notebooks/AppleStore/GenreTypeT.png
+    :alt: Apple App Store
+    :width: 90%
+    :align: center
+    
+    Apple App Store
+
+.. figure:: notebooks/GoogleStore/GenreTypeT.png
+    :alt: Google Play App Store
+    :width: 90%
+    :align: center
+    
+    Google Play App Store
+
+.. figure:: notebooks/AppleStore/GenreTypeR.png
+    :alt: Apple App Store
+    :width: 90%
+    :align: center
+    
+    Apple App Store
+
+.. figure:: notebooks/GoogleStore/GenreTypeR.png
+    :alt: Google Play App Store
+    :width: 90%
+    :align: center
+    
+    Google Play App Store
+
+Most expensive apps by genres 
++++++++++++++++++++++++++++++++
+
+Let's look at `the notebook <notebooks/Google\ Data.ipynb>` for most expensive apps by genres on Google Play. 
+How about Apple App Store? Let's find out in `this notebook <notebooks/AppleStore.ipynb>`
 Total price of paid apps in each genre
 ----------------------------------------
 
@@ -110,14 +162,12 @@ pie chart for reviews
 -----------------------
 
 
-most expensive apps by genres 
---------------------------------
+
 
 bar chart for rating of free vs paid apps
 --------------------------------------------
 
-content rating by genres
---------------------------
+
 
 Conclusion
 ------------
