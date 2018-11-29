@@ -253,7 +253,7 @@ Summary
 Apple App Store
 +++++++++++++++++
 
-  * Games category make the most revenue from app store. This category also has the biggest number available for Everyone to download. This explains its popularity due to no age limit.
+  * The “Games” category makes the most revenue from the Apple App Store. This category also has the biggest number available for everyone to download. This explains its popularity due to no age limit as well as people’s gravitation towards games. 
   * Games app also take the crown for the biggest number of apps available in every content rating category.
   * Free apps and Paid apps approximately equally divide the marketplace.
   * Rating distribution between free and paid apps are nearly the same. 
