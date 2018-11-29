@@ -40,6 +40,7 @@ Hence, by analyzing the data from two biggest market places, we want to answer o
 
 **What are the current trends and future propects of mobile apps development?**
 
+That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future propects of mobile apps, you will then easily identify your direction to develop your own app.
 
 Data Cleaning
 ---------------
@@ -65,7 +66,7 @@ Note that I dropped some columns and renamed others in the following code.
     googleStore.rename(columns={'App': 'app', 'Rating': 'rating', 'Reviews': 'reviews', 'Size': 'size', 'Price': 'price', 'Genres': 'genres'}, inplace=True)
     googleStore = googleStore.drop(columns=['Category', 'Installs', 'Type', 'Last Updated', 'Current Ver', 'Android Ver'])
 
-
+For more details, let's take a look at `this notebook <notebooks/Google Data.ipynb>`_ to see how I used the tools we learned to clean up the data. 
 
 Bar Chart for count of price of apps for genres
 -------------------------------------------------
