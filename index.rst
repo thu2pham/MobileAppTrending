@@ -63,8 +63,7 @@ We start by importing packages. Since we are working with CSV data, we will need
 
 Renaming and Dropping 
 +++++++++++++++++++++++
-As we talked earlier, in order to work with two separate dataset, we need to standardize each of them. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
-Note that I dropped some columns and renamed others in the following code.
+As we said earlier, in order to work with two separate datasets we needed to standardize each of them; so we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while Thu used Python in the notebook. We did not want to limit our tools when approaching data. Note that Thu dropped some columns and renamed others in the following code. Zach deleted 8 columns consisting of “ID”, “Currency”, “Rating_count_ver”, “User_rating_ver”, “sup_device_num”, “ipadSC_url”, “Lang_num”, “vpp_lic”. 
 
 .. code-block:: python
 
