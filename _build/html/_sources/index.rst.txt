@@ -93,7 +93,7 @@ Price distribution of apps by genres
     Google Play App Store
 
 
-Here we can see a significant difference between two marketplaces. Most of the apps from Apple App Store fall into Games category while it is Finance for Google Play.
+Here we can see a significant difference between two marketplaces. The apps from Apple App Store that fall into Games category make the most money while it is Finance for Google Play.
 
 Content rating distribution by genres
 +++++++++++++++++++++++++++++++++++++++
@@ -143,17 +143,33 @@ Content rating distribution by genres
 Most expensive apps by genres 
 +++++++++++++++++++++++++++++++
 
-Let's look at `the notebook <notebooks/Google\ Data.ipynb>` for most expensive apps by genres on Google Play. 
-How about Apple App Store? Let's find out in `this notebook <notebooks/AppleStore.ipynb>`
-Total price of paid apps in each genre
-----------------------------------------
+Let's look at `the notebook <notebooks/Google\ Data.ipynb>`_ for most expensive apps by genres on Google Play. 
+How about Apple App Store? Let's find out in `this notebook <notebooks/AppleStore.ipynb>`_.
 
+Free Apps vs. Paid Apps
+----------------------------
+
+Free vs Paid apps counts
++++++++++++++++++++++++++++++++++++++++
+
+.. figure:: notebooks/AppleStore/PieChartFreeVSPaid.png
+    :alt: Apple App Store
+    :width: 90%
+    :align: center
+    
+    Apple App Store
+
+.. figure:: notebooks/GoogleStore/PieChartFreeVSPaid.png
+    :alt: Google Play App Store
+    :width: 90%
+    :align: center
+    
+    Google Play App Store
 
 Bar Chart for count of content rating
 ---------------------------------------
 
-Pie chart for free vs paid apps counts
-------------------------------------------
+
 
 pie chart for size comparison
 -------------------------------
