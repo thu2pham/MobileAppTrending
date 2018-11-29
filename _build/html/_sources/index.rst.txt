@@ -80,14 +80,14 @@ Price distribution of apps by genres
 
 .. figure:: notebooks/AppleStore/GenrePrice.png
     :alt: Apple App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/GenrePrice.png
     :alt: Google Play App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Google Play App Store
@@ -100,42 +100,42 @@ Content rating distribution by genres
 
 .. figure:: notebooks/AppleStore/GenreTypeE.png
     :alt: Apple App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/GenreTypeE.png
     :alt: Google Play App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Google Play App Store
 
 .. figure:: notebooks/AppleStore/GenreTypeT.png
     :alt: Apple App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/GenreTypeT.png
     :alt: Google Play App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Google Play App Store
 
 .. figure:: notebooks/AppleStore/GenreTypeR.png
     :alt: Apple App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/GenreTypeR.png
     :alt: Google Play App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Google Play App Store
@@ -154,14 +154,14 @@ Free vs Paid apps counts
 
 .. figure:: notebooks/AppleStore/PieChartFreeVSPaid.png
     :alt: Apple App Store
-    :width: 80%
+    :width: 60%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/PieChartFreeVSPaid.png
     :alt: Google Play App Store
-    :width: 80%
+    :width: 60%
     :align: center
     
     Google Play App Store
@@ -205,14 +205,14 @@ Size Comparison
 
 .. figure:: notebooks/AppleStore/PieChartLargeVSSmall.png
     :alt: Apple App Store
-    :width: 80%
+    :width: 60%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/PieChartLargeVSSmall.png
     :alt: Google Play App Store
-    :width: 80%
+    :width: 60%
     :align: center
     
     Google Play App Store
@@ -222,17 +222,39 @@ Amount of reviews
 
 .. figure:: notebooks/AppleStore/PieChartAppReviews.png
     :alt: Apple App Store
-    :width: 80%
+    :width: 60%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/PieChartAppReviews.png
     :alt: Google Play App Store
-    :width: 80%
+    :width: 60%
     :align: center
     
     Google Play App Store
+
+Summary
+------------
+
+Apple App Store
++++++++++++++++++
+
+  * Games category make the most revenue from app store. This category also has the biggest number available for Everyone to download. This explains its popularity due to no age limit.
+  * Games app also take the crown for the biggest number of apps available in every content rating category.
+  * Free apps and Paid apps approximately equally divide the marketplace.
+  * Rating distribution between free and paid apps are nearly the same. 
+  * 90% of apps from Apple App Store are large apps which takes more than 20MB in your device memory.
+
+Google Play Store
+++++++++++++++++++++ 
+
+  * Finance category make the most revenue from app store. 
+  * Genres distributions vary between each content rating age. Tool apps lead the content for everyone while entertainment are most popular among teenagers. Interestingly, there is a tremendous amount of dating apps for adults.
+  * Free apps and Paid apps have significant difference in numbers.
+  * However, rating distribution between free and paid apps are nearly the same. 
+  * 2/3 of apps from Google Play Store are small apps which takes less than 20MB in your device memory.
+  * It seems like apps from Google Play receive more reviews than they are in Apple Store.
 
 Conclusion
 ------------
