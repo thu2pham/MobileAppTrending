@@ -39,11 +39,13 @@
 <li><a class="reference internal" href="#data-acquisition">Data Acquisition</a></li>
 <li><a class="reference internal" href="#why-mobile-apps">Why Mobile Apps?</a></li>
 <li><a class="reference internal" href="#data-cleaning">Data Cleaning</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#importing-packages">Importing packages</a></li>
 <li><a class="reference internal" href="#renaming-and-dropping">Renaming and Dropping</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#bar-chart-for-count-of-price-of-apps-for-genres">Bar Chart for count of price of apps for genres</a></li>
+<li><a class="reference internal" href="#app-distribution-by-genres">App Distribution by Genres</a></li>
+<li><a class="reference internal" href="#the-price-distribution-of-apps-by-genres">The price distribution of apps by genres</a></li>
 <li><a class="reference internal" href="#total-price-of-paid-apps-in-each-genre">Total price of paid apps in each genre</a></li>
 <li><a class="reference internal" href="#bar-chart-for-count-of-content-rating">Bar Chart for count of content rating</a></li>
 <li><a class="reference internal" href="#pie-chart-for-free-vs-paid-apps-counts">Pie chart for free vs paid apps counts</a></li>
@@ -52,6 +54,7 @@
 <li><a class="reference internal" href="#most-expensive-apps-by-genres">most expensive apps by genres</a></li>
 <li><a class="reference internal" href="#bar-chart-for-rating-of-free-vs-paid-apps">bar chart for rating of free vs paid apps</a></li>
 <li><a class="reference internal" href="#content-rating-by-genres">content rating by genres</a></li>
+<li><a class="reference internal" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
@@ -110,14 +113,18 @@ We build this website to share what we have learned and discovered from that jou
 </div>
 <div class="section" id="why-mobile-apps">
 <h2>Why Mobile Apps?<a class="headerlink" href="#why-mobile-apps" title="Permalink to this headline">¶</a></h2>
-<p>Let’s ask ourselves: How many times a day you pick up your phone and not use any app?</p>
-<p>Well, that is very rare. In fact, we access to the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to <a class="reference external" href="https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/">Statista</a>, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.</p>
-<p>Hence, by analyzing the data from two biggest market places, we want to answer one big question:</p>
-<p><strong>What are the current trends and future propects of mobile apps development?</strong></p>
+<p>Let’s ask ourselves: How many times a day do you pick up your phone and not use an app?</p>
+<p>Well, that is very rare. In fact, we access the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to <a class="reference external" href="https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/">Statista</a>, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.</p>
+<p>Hence, by analyzing the data from two of the biggest market places, we want to answer one big question:</p>
+<p><strong>What are the current trends and future prospects of mobile apps development?</strong></p>
 <p>That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future propects of mobile apps, you will then easily identify your direction to develop your own app.</p>
 </div>
 <div class="section" id="data-cleaning">
 <h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>We collect more than 7,100 data points from Apple App Store and approximately 10,100 data points from Google Play App Store. We focus on app title, category, developer name, rating, number of reviews, app size, number of installs, and price.</p>
+</div>
 <div class="section" id="importing-packages">
 <h3>Importing packages<a class="headerlink" href="#importing-packages" title="Permalink to this headline">¶</a></h3>
 <p>We start by importing packages. Since we are working with CSV data, we will need <em>pandas</em> to read our data. Other packages will be helpful for visualization.</p>
@@ -137,11 +144,21 @@ Note that I dropped some columns and renamed others in the following code.</p>
 </pre></div>
 </div>
 <p>For more details, let’s take a look at <a class="reference internal" href="notebooks/Google Data.html"><span class="doc">this notebook</span></a> to see how I used the tools we learned to clean up the data.</p>
-<p>notebooks/Google Data.ipynb</p>
 </div>
 </div>
-<div class="section" id="bar-chart-for-count-of-price-of-apps-for-genres">
-<h2>Bar Chart for count of price of apps for genres<a class="headerlink" href="#bar-chart-for-count-of-price-of-apps-for-genres" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="app-distribution-by-genres">
+<h2>App Distribution by Genres<a class="headerlink" href="#app-distribution-by-genres" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="the-price-distribution-of-apps-by-genres">
+<h2>The price distribution of apps by genres<a class="headerlink" href="#the-price-distribution-of-apps-by-genres" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/GenrePrice.png"><img alt="Apple App Store" src="_images/GenrePrice.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-text">Apple App Store</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="notebooks/GoogleData/notebooks.png"><img alt="Google Play App Store" src="notebooks/GoogleData/notebooks.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-text">Google Play App Store</span></p>
+</div>
 </div>
 <div class="section" id="total-price-of-paid-apps-in-each-genre">
 <h2>Total price of paid apps in each genre<a class="headerlink" href="#total-price-of-paid-apps-in-each-genre" title="Permalink to this headline">¶</a></h2>
@@ -166,6 +183,10 @@ Note that I dropped some columns and renamed others in the following code.</p>
 </div>
 <div class="section" id="content-rating-by-genres">
 <h2>content rating by genres<a class="headerlink" href="#content-rating-by-genres" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>With all the commotion around Phones and more specifically, Apps, there is little to dispute when we bring up the fact that it is an ever growing business with a nearly limitless audience as well as potential to become bigger every second. This analysis is just the tip of the iceberg when it comes to the online entertainment industry, since the internet is a ever-growing industry, there needs be constant analysis of the trends that prove to make certain platforms successful and we hope to have intrigued your thought process of the App Industry.</p>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
