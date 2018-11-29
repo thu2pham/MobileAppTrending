@@ -14,7 +14,21 @@ Welcome to Data Visualization Website's by Thu & Zach!
 The goal of this project is to practice the analytical skills we learn throughout this semester. We choose the datasets and ask ourselves what kind of question we can and want to answer from our sources.
 We build this website to share what we have learned and discovered from that journey.
 
-   
+
+Why Mobile Apps?
+---------------------
+
+Let's ask ourselves: How many times a day do you pick up your phone and not use an app?
+
+Well, that is very rare. In fact, we access the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to `Statista <https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/>`_, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.
+
+Hence, by analyzing the data from two of the biggest market places, we want to answer one big question:
+
+**What are the current trends and future prospects of mobile apps development?**
+
+That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future prospects of mobile apps, you will then easily identify your direction to develop your own app.
+
+
 Data Acquisition
 ---------------------
 
@@ -29,19 +43,6 @@ Knowing the disadvantages of our data, each of us work with one dataset, but we 
 #. Identify the area we do not want in our dataset.
 #. Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word. this is to make sure it’s easy to reference both datasets in a uniform fashion.
 
-
-Why Mobile Apps?
----------------------
-
-Let's ask ourselves: How many times a day do you pick up your phone and not use an app?
-
-Well, that is very rare. In fact, we access the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to `Statista <https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/>`_, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.
-
-Hence, by analyzing the data from two of the biggest market places, we want to answer one big question:
-
-**What are the current trends and future prospects of mobile apps development?**
-
-That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future prospects of mobile apps, you will then easily identify your direction to develop your own app.
 
 Data Cleaning
 ---------------
