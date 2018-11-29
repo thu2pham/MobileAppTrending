@@ -13,6 +13,7 @@ Welcome to Data Visualization Website's by Thu & Zach!
 
 The goal of this project is to practice the analytical skills we learn throughout this semester. We choose the datasets and ask ourselves what kind of question we can and want to answer from our sources.
 We build this website to share what we have learned and discovered from that journey.
+
    
 Data Acquisition
 ---------------------
@@ -26,6 +27,18 @@ Knowing the disadvantage of our data, each of us work with one dataset but we ha
 #. Formulate the clean dataset. Looking at the data we got, think of how it is going to look like after cleaning, which variable will be useful, which variable we could not utilize will be eliminated.
 #. Identify the area we do not want in our dataset.
 #. Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word.
+
+Why Mobile Apps?
+---------------------
+
+Let's ask ourselves: How many times a day you pick up your phone and not use any app?
+
+Well, that is very rare. In fact, we access to the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to 'Statista <https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/>'_, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.
+
+Hence, by analyzing the data from two biggest market places, we want to answer one big question:
+
+**What are the current trends and future propects of mobile apps development?**
+
 
 Data Cleaning
 ---------------
@@ -43,7 +56,7 @@ We start by importing packages. Since we are working with CSV data, we will need
 
 Renaming and Dropping 
 +++++++++++++++++++++++
-As we talked earlier, in order to work with two separate dataset, we need to standardize each of the. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
+As we talked earlier, in order to work with two separate dataset, we need to standardize each of them. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
 Note that I dropped some columns and renamed others in the following code.
 
 .. code-block:: python
@@ -51,7 +64,7 @@ Note that I dropped some columns and renamed others in the following code.
     googleStore.rename(columns={'App': 'app', 'Rating': 'rating', 'Reviews': 'reviews', 'Size': 'size', 'Price': 'price', 'Genres': 'genres'}, inplace=True)
     googleStore = googleStore.drop(columns=['Category', 'Installs', 'Type', 'Last Updated', 'Current Ver', 'Android Ver'])
 
-hahaha
+
 
 Bar Chart for count of price of apps for genres
 -------------------------------------------------

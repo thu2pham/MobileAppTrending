@@ -37,6 +37,7 @@
   <ul>
 <li><a class="reference internal" href="#">Welcome to Data Visualization Website’s by Thu &amp; Zach!</a><ul>
 <li><a class="reference internal" href="#data-acquisition">Data Acquisition</a></li>
+<li><a class="reference internal" href="#why-mobile-apps">Why Mobile Apps?</a></li>
 <li><a class="reference internal" href="#data-cleaning">Data Cleaning</a><ul>
 <li><a class="reference internal" href="#importing-packages">Importing packages</a></li>
 <li><a class="reference internal" href="#renaming-and-dropping">Renaming and Dropping</a></li>
@@ -105,6 +106,13 @@ We build this website to share what we have learned and discovered from that jou
 #. Identify the area we do not want in our dataset.
 #. Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word.</p>
 </div>
+<div class="section" id="why-mobile-apps">
+<h2>Why Mobile Apps?<a class="headerlink" href="#why-mobile-apps" title="Permalink to this headline">¶</a></h2>
+<p>Let’s ask ourselves: How many times a day you pick up your phone and not use any app?</p>
+<p>Well, that is very rare. In fact, we access to the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to ‘Statista &lt;<a class="reference external" href="https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/">https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/</a>&gt;’_, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.</p>
+<p>Hence, by analyzing the data from two biggest market places, we want to answer one big question:</p>
+<p><strong>What are the current trends and future propects of mobile apps development?</strong></p>
+</div>
 <div class="section" id="data-cleaning">
 <h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="importing-packages">
@@ -119,13 +127,12 @@ We build this website to share what we have learned and discovered from that jou
 </div>
 <div class="section" id="renaming-and-dropping">
 <h3>Renaming and Dropping<a class="headerlink" href="#renaming-and-dropping" title="Permalink to this headline">¶</a></h3>
-<p>As we talked earlier, in order to work with two separate dataset, we need to standardize each of the. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
+<p>As we talked earlier, in order to work with two separate dataset, we need to standardize each of them. So we started by renaming those columns that we believe is going to be used for further analysis and getting rid of unnecessary items. Zach made his changes directly on his CSV file from Excel while I used Python. We did not want to limit our tools when approaching data.
 Note that I dropped some columns and renamed others in the following code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">googleStore</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;App&#39;</span><span class="p">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">:</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Reviews&#39;</span><span class="p">:</span> <span class="s1">&#39;reviews&#39;</span><span class="p">,</span> <span class="s1">&#39;Size&#39;</span><span class="p">:</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;Genres&#39;</span><span class="p">:</span> <span class="s1">&#39;genres&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">googleStore</span> <span class="o">=</span> <span class="n">googleStore</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Installs&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Last Updated&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Ver&#39;</span><span class="p">,</span> <span class="s1">&#39;Android Ver&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>hahaha</p>
 </div>
 </div>
 <div class="section" id="bar-chart-for-count-of-price-of-apps-for-genres">
