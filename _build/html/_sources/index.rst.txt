@@ -154,36 +154,85 @@ Free vs Paid apps counts
 
 .. figure:: notebooks/AppleStore/PieChartFreeVSPaid.png
     :alt: Apple App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Apple App Store
 
 .. figure:: notebooks/GoogleStore/PieChartFreeVSPaid.png
     :alt: Google Play App Store
-    :width: 90%
+    :width: 80%
     :align: center
     
     Google Play App Store
 
-Bar Chart for count of content rating
+Rating of Free vs Paid apps
++++++++++++++++++++++++++++++
+
+.. figure:: notebooks/AppleStore/UserRatingFreeVSPaid.png
+    :alt: Apple App Store
+    :width: 80%
+    :align: center
+    
+    Apple App Store
+
+.. figure:: notebooks/GoogleStore/UserRatingFreeVSPaid.png
+    :alt: Google Play App Store
+    :width: 80%
+    :align: center
+    
+    Google Play App Store
+
+Content Rating Distribution
 ---------------------------------------
 
+.. figure:: notebooks/AppleStore/ContentRatingCount.png
+    :alt: Apple App Store
+    :width: 80%
+    :align: center
+    
+    Apple App Store
 
+.. figure:: notebooks/GoogleStore/ContentRatingCount.png
+    :alt: Google Play App Store
+    :width: 80%
+    :align: center
+    
+    Google Play App Store
 
-pie chart for size comparison
+Size Comparison
 -------------------------------
 
-pie chart for reviews
+.. figure:: notebooks/AppleStore/PieChartLargeVSSmall.png
+    :alt: Apple App Store
+    :width: 80%
+    :align: center
+    
+    Apple App Store
+
+.. figure:: notebooks/GoogleStore/PieChartLargeVSSmall.png
+    :alt: Google Play App Store
+    :width: 80%
+    :align: center
+    
+    Google Play App Store
+
+Amount of reviews
 -----------------------
 
+.. figure:: notebooks/AppleStore/PieChartAppReviews.png
+    :alt: Apple App Store
+    :width: 80%
+    :align: center
+    
+    Apple App Store
 
-
-
-bar chart for rating of free vs paid apps
---------------------------------------------
-
-
+.. figure:: notebooks/GoogleStore/PieChartAppReviews.png
+    :alt: Google Play App Store
+    :width: 80%
+    :align: center
+    
+    Google Play App Store
 
 Conclusion
 ------------
