@@ -112,12 +112,12 @@ We build this website to share what we have learned and discovered from that jou
 </ul>
 </dd>
 </dl>
-<p>These two datasets give us a big picture about mobile apps since Google Store and App Store are now two biggest sources in the market. Taken as a whole, the data shows some interesting correlations more than just a vast list of apps and prices. These two are extremely valuable to compare as a big picture. However, one disadvantage of these dataset is that we could not merge them together since the app ID is not identical. Hence, when working with the data, we have to go back and forth between two datasets.</p>
-<p>Knowing the disadvantage of our data, each of us work with one dataset but we have some rules to make sure our workflow are consistent and on the same page:</p>
+<p>These two datasets give us a big picture of mobile apps since Google Store and App Store are now the two largest sources in the mobile application market. Taken as a whole, the data shows some interesting correlations on top of a vast list of information about apps and prices. These two are extremely valuable to compare in the big picture. However, one disadvantage of these datasets is that we could not merge them together since the app ID/Name is not identical. While working with the data, we have to go back and forth between the two datasets to make correlations.</p>
+<p>Knowing the disadvantages of our data, each of us work with one dataset, but we had to set some rules to make sure our workflow was consistent with the other’s:</p>
 <ol class="arabic simple">
 <li>Formulate the clean dataset. Looking at the data we got, think of how it is going to look like after cleaning, which variable will be useful, which variable we could not utilize will be eliminated.</li>
 <li>Identify the area we do not want in our dataset.</li>
-<li>Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word.</li>
+<li>Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word. this is to make sure it’s easy to reference both datasets in a uniform fashion.</li>
 </ol>
 </div>
 <div class="section" id="why-mobile-apps">
@@ -126,7 +126,7 @@ We build this website to share what we have learned and discovered from that jou
 <p>Well, that is very rare. In fact, we access the Internet 24/7 to be able to constantly communicate on the go. It could be Facebook, Messenger, Snapchat, or Instagram, etc. some popular apps. The increasing number of smartphone users has led to a dramatic increase in the number of apps that consumers use on their phones. According to <a class="reference external" href="https://www.statista.com/statistics/269025/worldwide-mobile-app-revenue-forecast/">Statista</a>, In 2020, mobile apps are projected to generate 188.9 billion U.S. dollars in revenues via app stores and in-app advertising. This is a huge industry.</p>
 <p>Hence, by analyzing the data from two of the biggest market places, we want to answer one big question:</p>
 <p><strong>What are the current trends and future prospects of mobile apps development?</strong></p>
-<p>That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future propects of mobile apps, you will then easily identify your direction to develop your own app.</p>
+<p>That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future prospects of mobile apps, you will then easily identify your direction to develop your own app.</p>
 </div>
 <div class="section" id="data-cleaning">
 <h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
@@ -171,6 +171,7 @@ Note that I dropped some columns and renamed others in the following code.</p>
 </div>
 <div class="section" id="content-rating-distribution-by-genres">
 <h3>Content rating distribution by genres<a class="headerlink" href="#content-rating-distribution-by-genres" title="Permalink to this headline">¶</a></h3>
+<p>When we were looking at the variables we found that relating content rating with the number of apps that existed in these categories could be interesting, first we filtered out the apps that are “0+”, basically E for Everyone, these are interesting since we have mainly “Games” for the apple store data and then a majority of “Tools” for the google play store. The thing that we got from this is that Google Play Store doesn’t have a Genre related to “Games”, but they separate it into other categories such as “Action”, “Entertainment”, “Arcade”, and other categories that the apps would fit into. It is also clear to anyone looking at these graphs that on the apple store “Games” are the most common app, while the Google Play Store has a wide diversity of categories. Another fun thing to point out is that the Google Play Rated R is mainly “Dating” apps, interesting.</p>
 <div class="figure align-center" id="id4">
 <a class="reference internal image-reference" href="_images/GenreTypeE.png"><img alt="Apple App Store" src="_images/GenreTypeE.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-text">Apple App Store</span></p>

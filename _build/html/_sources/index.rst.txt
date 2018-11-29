@@ -21,13 +21,14 @@ Data Acquisition
 We started by going to Kaggle and retreiving two datasets.
   * `Apple Store dataset <https://www.kaggle.com/ramamet4/app-store-apple-data-set-10k-apps>`_
   * `Google Store dataset <https://www.kaggle.com/lava18/google-play-store-apps>`_
-These two datasets give us a big picture about mobile apps since Google Store and App Store are now two biggest sources in the market. Taken as a whole, the data shows some interesting correlations more than just a vast list of apps and prices. These two are extremely valuable to compare as a big picture. However, one disadvantage of these dataset is that we could not merge them together since the app ID is not identical. Hence, when working with the data, we have to go back and forth between two datasets.
+These two datasets give us a big picture of mobile apps since Google Store and App Store are now the two largest sources in the mobile application market. Taken as a whole, the data shows some interesting correlations on top of a vast list of information about apps and prices. These two are extremely valuable to compare in the big picture. However, one disadvantage of these datasets is that we could not merge them together since the app ID/Name is not identical. While working with the data, we have to go back and forth between the two datasets to make correlations. 
 
-Knowing the disadvantage of our data, each of us work with one dataset but we have some rules to make sure our workflow are consistent and on the same page:
+Knowing the disadvantages of our data, each of us work with one dataset, but we had to set some rules to make sure our workflow was consistent with the other’s:
 
 #. Formulate the clean dataset. Looking at the data we got, think of how it is going to look like after cleaning, which variable will be useful, which variable we could not utilize will be eliminated.
 #. Identify the area we do not want in our dataset.
-#. Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word.
+#. Standardize our variable names. Each colum in each dataset will be renamed the same way. We all use lower case, underscore to separate to word. this is to make sure it’s easy to reference both datasets in a uniform fashion.
+
 
 Why Mobile Apps?
 ---------------------
@@ -40,7 +41,7 @@ Hence, by analyzing the data from two of the biggest market places, we want to a
 
 **What are the current trends and future prospects of mobile apps development?**
 
-That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future propects of mobile apps, you will then easily identify your direction to develop your own app.
+That is a crucial question to explore in many cases. Since mobile apps are becoming more and more popular, an excellent resource for engaging, interacting and communicating with your customers. Imagine you are a bussiness owner who want to launch an app for your service, before hiring a development team to handle the technical side, you need a big picture of your target market. Will your app be offer to a wide range of people? Are there any content rating you need to concern? What is the cost to install? Those questions are critical to generate your revenue from the app and its effectivity. Fortunately, we have the data to help use solve the problem. By predicting the trend and future prospects of mobile apps, you will then easily identify your direction to develop your own app.
 
 Data Cleaning
 ---------------
@@ -97,6 +98,8 @@ Here we can see a significant difference between two marketplaces. The apps from
 
 Content rating distribution by genres
 +++++++++++++++++++++++++++++++++++++++
+
+When we were looking at the variables we found that relating content rating with the number of apps that existed in these categories could be interesting, first we filtered out the apps that are “0+”, basically E for Everyone, these are interesting since we have mainly “Games” for the apple store data and then a majority of “Tools” for the google play store. The thing that we got from this is that Google Play Store doesn’t have a Genre related to “Games”, but they separate it into other categories such as “Action”, “Entertainment”, “Arcade”, and other categories that the apps would fit into. It is also clear to anyone looking at these graphs that on the apple store “Games” are the most common app, while the Google Play Store has a wide diversity of categories. Another fun thing to point out is that the Google Play Rated R is mainly “Dating” apps, interesting.
 
 .. figure:: notebooks/AppleStore/GenreTypeE.png
     :alt: Apple App Store
